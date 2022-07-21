@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.encyclopedia-galactica.services</groupId>
+    <artifactId>sourceformat</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>SourceFormat service</name>
+    <description>SourceFormat service</description>
+
+    <packaging>pom</packaging>
+    <modules>
+        <module>entities</module>
+        <module>controllers</module>
+        <module>dtos</module>
+        <module>mappers</module>
+        <module>repositories</module>
+        <module>services</module>
+        <module>controllers.tests</module>
+        <module>dtos.tests</module>
+        <module>entities.tests</module>
+        <module>mappers.tests</module>
+        <module>repositories.tests</module>
+        <module>services.tests</module>
+        <module>E2E</module>
+        <module>application</module>
+    </modules>
+    
+</project>
