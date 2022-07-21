@@ -8,4 +8,6 @@ public interface SourceFormatMapperInterface {
   SourceFormatDto mapSourceFormatToSourceFormatDto(SourceFormat sourceFormat);
 
   List<SourceFormatDto> mapSourceFormatsToSourceFormatDtos(List<SourceFormat> sourceFormats);
+
+  SourceFormat mapSourceFormatDtoToSourceFormat(SourceFormatDto dto);
 }
