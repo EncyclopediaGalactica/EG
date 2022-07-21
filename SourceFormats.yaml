@@ -1,0 +1,28 @@
+openapi: 3.0.3
+info:
+  title: SourceFormats
+  description: Encyclopedia Galactica SourceFormats Api
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /sourceformat/{id}:
+    get:
+      description: Returns the defined SourceFormatDto object
+        responses:
+          '200':
+            description: The defined SourceFormatDto object
+            content:
+              application/json:
+                schema:
+                  $ref:
+    post:
+    put:
+    delete:
+  /sourceformat/{parentId}/{childId}:
+    post:
+components: 
+  schemas: 
+    SourceFormatDto:
+  
+  
