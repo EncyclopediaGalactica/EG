@@ -2,7 +2,7 @@ package com.encyclopediagalactica.services.sourceformat.services.sourceformat;
 
 import java.util.List;
 import com.encyclopediagalactica.services.sourceformat.entities.SourceFormat;
-import com.encyclopediagalactica.services.sourceformat.mappers.SourceFormatMapperInterface;
+import com.encyclopediagalactica.services.sourceformat.mappers.interfaces.SourceFormatMapperInterface;
 import com.encyclopediagalactica.services.sourceformat.repositories.SourceFormatPagingAndSortingRepository;
 import com.encyclopediagalactica.sourceformat.dto.SourceFormatDto;
 import lombok.NonNull;
