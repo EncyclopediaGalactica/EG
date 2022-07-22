@@ -1,11 +1,11 @@
-package com.encyclopediagalactica.sourceformats.tests.mappers;
+package com.encyclopediagalactica.sourceformats.mappers.tests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.encyclopediagalactica.services.sourceformat.entities.SourceFormat;
-import com.encyclopediagalactica.services.sourceformat.mappers.SourceFormatMapper;
-import com.encyclopediagalactica.services.sourceformat.mappers.SourceFormatMapperInterface;
+import com.encyclopediagalactica.services.sourceformat.mappers.implementations.SourceFormatMapper;
+import com.encyclopediagalactica.services.sourceformat.mappers.interfaces.SourceFormatMapperInterface;
 import com.encyclopediagalactica.sourceformat.dto.SourceFormatDto;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

@@ -14,17 +14,20 @@
         <module>entities</module>
         <module>controllers</module>
         <module>dtos</module>
-        <module>mappers</module>
+
+        <module>mappers.implementations</module>
+        <module>mappers.interfaces</module>
+        <module>mappers.tests</module>
+
         <module>repositories</module>
         <module>services</module>
         <module>controllers.tests</module>
         <module>dtos.tests</module>
         <module>entities.tests</module>
-        <module>mappers.tests</module>
         <module>repositories.tests</module>
         <module>services.tests</module>
         <module>E2E</module>
         <module>application</module>
     </modules>
-    
+
 </project>

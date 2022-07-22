@@ -1,9 +1,10 @@
-package com.encyclopediagalactica.services.sourceformat.mappers;
+package com.encyclopediagalactica.services.sourceformat.mappers.implementations;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import com.encyclopediagalactica.services.sourceformat.entities.SourceFormat;
+import com.encyclopediagalactica.services.sourceformat.mappers.interfaces.SourceFormatMapperInterface;
 import com.encyclopediagalactica.sourceformat.dto.SourceFormatDto;
 import com.sun.istack.NotNull;
 import lombok.NonNull;
@@ -34,6 +35,19 @@ public class SourceFormatMapper implements SourceFormatMapperInterface {
       return dtos;
     }
     return Collections.emptyList();
+  }
+
+  @Override
+  public List<SourceFormat> mapSourceFormatDtosToSourceFormats(
+      @NotNull List<SourceFormatDto> dtos) {
+    List<SourceFormat> sourceFormats = new ArrayList<>();
+    if (!dtos.isEmpty()) {
+      for (SourceFormatDto dto : dtos) {
+        SourceFormat sourceFormat = mapSourceFormatDtoToSourceFormat(dto);
+        sourceFormats.add(sourceFormat);
+      }
+    }
+    return sourceFormats;
   }
 
   @Override

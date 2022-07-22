@@ -11,17 +11,25 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.encyclopeia-galactica.sourceformats</groupId>
-    <artifactId>mappers.tests</artifactId>
+    <artifactId>mappers.implementations</artifactId>
+    <name>mappers.implementations</name>
+    <description>SourceFormat context related mapper implementations</description>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.encyclopeia-galactica.sourceformats</groupId>
-            <artifactId>mappers.implementations</artifactId>
+            <artifactId>entities</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.encyclopeia-galactica.sourceformats</groupId>
+            <artifactId>dtos</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -29,15 +37,6 @@
             <artifactId>mappers.interfaces</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
 </project>
