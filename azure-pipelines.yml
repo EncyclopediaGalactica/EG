@@ -16,6 +16,8 @@ stages:
           - script: |
               echo $PATH
               env | sort
+              mvn --version
+              java -version
 
   - stage: Feature_branch
     condition: ne(variables['System.PullRequest.SourceBranch'], '')
