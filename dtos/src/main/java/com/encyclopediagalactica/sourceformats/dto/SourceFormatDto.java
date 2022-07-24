@@ -6,7 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SourceFormatDto {
+
   private Long id;
+
   private String name;
 
   //<editor-fold desc="ctor">

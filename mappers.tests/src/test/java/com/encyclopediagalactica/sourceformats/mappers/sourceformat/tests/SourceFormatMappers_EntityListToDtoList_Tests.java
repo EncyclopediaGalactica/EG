@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.mappers.sourceformat.interfaces.tests;
+package com.encyclopediagalactica.sourceformats.mappers.sourceformat.tests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class SourceFormatMappers_DtoListToEntityList_Tests {
+public class SourceFormatMappers_EntityListToDtoList_Tests {
 
   private SourceFormatMapperInterface sut;
 
@@ -27,7 +27,7 @@ public class SourceFormatMappers_DtoListToEntityList_Tests {
   public void shouldThrowWhen_InputIsNull() {
     // Act & Assert
     assertThatThrownBy(() -> {
-      sut.mapSourceFormatDtosToSourceFormats(null);
+      sut.mapSourceFormatsToSourceFormatDtos(null);
     }).isInstanceOf(NullPointerException.class);
   }
 
@@ -39,23 +39,23 @@ public class SourceFormatMappers_DtoListToEntityList_Tests {
     long secondId = 101L;
     String firstName = "asd";
     String secondName = "asd2";
-    SourceFormatDto sourceFormatDto1 = new SourceFormatDto(firstId, firstName);
-    SourceFormatDto sourceFormatDto2 = new SourceFormatDto(secondId, secondName);
-    List<SourceFormatDto> sourceFormatDtos = new ArrayList<>();
-    sourceFormatDtos.add(sourceFormatDto1);
-    sourceFormatDtos.add(sourceFormatDto2);
+    SourceFormat sourceFormat1 = new SourceFormat(firstId, firstName);
+    SourceFormat sourceFormat2 = new SourceFormat(secondId, secondName);
+    List<SourceFormat> sourceFormats = new ArrayList<>();
+    sourceFormats.add(sourceFormat1);
+    sourceFormats.add(sourceFormat2);
 
     // Act
-    List<SourceFormat> result = sut.mapSourceFormatDtosToSourceFormats(sourceFormatDtos);
+    List<SourceFormatDto> result = sut.mapSourceFormatsToSourceFormatDtos(sourceFormats);
 
     // Result
     assertThat(result.stream().count()).isEqualTo(2);
-    SourceFormat first = result.stream().filter(f -> f.getId() == firstId)
+    SourceFormatDto first = result.stream().filter(f -> f.getId() == firstId)
         .findAny()
         .orElse(null);
     assertThat(first.getId()).isEqualTo(firstId);
     assertThat(first.getName()).isEqualTo(firstName);
-    SourceFormat second = result.stream().filter(f -> f.getId() == secondId)
+    SourceFormatDto second = result.stream().filter(f -> f.getId() == secondId)
         .findAny()
         .orElse(null);
     assertThat(second.getId()).isEqualTo(secondId);

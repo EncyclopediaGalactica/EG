@@ -38,5 +38,10 @@ public class SourceFormat {
     this.id = id;
     this.name = name;
   }
+
+  public SourceFormat(String name) {
+    this.name = name;
+  }
+
   //</editor-fold>
 }

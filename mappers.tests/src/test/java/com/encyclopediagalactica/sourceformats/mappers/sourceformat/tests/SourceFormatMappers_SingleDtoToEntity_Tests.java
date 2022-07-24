@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.mappers.sourceformat.interfaces.tests;
+package com.encyclopediagalactica.sourceformats.mappers.sourceformat.tests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
