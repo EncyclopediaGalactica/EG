@@ -57,5 +57,5 @@ stages:
         displayName: Test Solution
         dependsOn: build_solution
         steps:
-          - script: mvn compile -f pom.xml
+          - script: mvn test -f pom.xml
     
