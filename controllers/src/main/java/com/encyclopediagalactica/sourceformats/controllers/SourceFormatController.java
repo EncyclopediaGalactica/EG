@@ -1,9 +1,9 @@
 package com.encyclopediagalactica.sourceformats.controllers;
 
 import java.util.List;
-import com.encyclopediagalactica.services.sourceformat.services.sourceformat.AddServiceInterface;
-import com.encyclopediagalactica.services.sourceformat.services.sourceformat.GetAllServiceInterface;
-import com.encyclopediagalactica.sourceformat.dto.SourceFormatDto;
+import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
+import com.encyclopediagalactica.sourceformats.services.sourceformat.AddServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.sourceformat.GetAllServiceInterface;
 import lombok.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
