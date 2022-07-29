@@ -34,6 +34,7 @@ public class AddService implements AddServiceInterface {
   @Override
   public SourceFormatDto add(
       @NonNull @Valid SourceFormatDto dto) {
+    
     this.trimDtoStringProperties(dto);
     this.validateInputDto(dto);
     SourceFormat sourceFormat = mapper.mapSourceFormatDtoToSourceFormat(dto);
@@ -42,6 +43,7 @@ public class AddService implements AddServiceInterface {
     this.validateEntity(sourceFormat);
     SourceFormat result = repository.save(sourceFormat);
     SourceFormatDto resultDto = mapper.mapSourceFormatToSourceFormatDto(result);
+    
     return resultDto;
   }
   
