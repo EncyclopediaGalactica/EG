@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.boot.jackson.JsonComponent;
 
 /**
  * SourceFormatDto class.

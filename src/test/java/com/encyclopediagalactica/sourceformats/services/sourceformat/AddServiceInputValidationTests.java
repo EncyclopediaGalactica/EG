@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
+import com.encyclopediagalactica.sourceformats.testdata.TestDataProviders;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -24,13 +25,13 @@ import org.springframework.test.context.TestPropertySource;
         "spring.jpa.hibernate.ddl-auto=create-drop"
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class AddServiceInputValidationTests {
+public class AddServiceInputValidationTests extends TestDataProviders {
 
   @Autowired
   private AddServiceInterface addService;
 
   @ParameterizedTest
-  @MethodSource("provideInvalidInputParameters")
+  @MethodSource("sourceFormat_new_entity_dto_inputValidationProvider")
   public void shouldThrow_whenInputIsInvalid(String name) {
     // Act && Assert
     assertThatThrownBy(() -> {
@@ -38,19 +39,5 @@ public class AddServiceInputValidationTests {
           SourceFormatDto.builder().name(name).build()
       );
     }).isInstanceOf(ConstraintViolationException.class);
-  }
-  
-  private static Stream<Arguments> provideInvalidInputParameters(){
-    return Stream.of(
-        Arguments.of(null, true),
-        Arguments.of("", true),
-        Arguments.of(" ", true),
-        Arguments.of("as", true),
-        Arguments.of("as ", true),
-        Arguments.of(
-            "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdv" +
-            "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdv" +
-            "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas", true)
-    );
   }
 }
