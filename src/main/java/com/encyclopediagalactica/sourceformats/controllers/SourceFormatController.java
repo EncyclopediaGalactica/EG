@@ -5,6 +5,7 @@ import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.interfaces.GetAllServiceInterface;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,8 +33,7 @@ public class SourceFormatController {
   }
 
   @GetMapping(
-      value = "/getAll",
-      consumes = "application/json")
+      value = "/getall")
   @ResponseBody
   public List<SourceFormatDto> getAll() {
     return getAllService.getAll();

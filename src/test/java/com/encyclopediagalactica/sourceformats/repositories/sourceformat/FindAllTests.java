@@ -41,7 +41,24 @@ public class FindAllTests {
     List<SourceFormat> sourceFormats = (List<SourceFormat>) this.repository.findAll();
 
     // Assert
+    assertThat(sourceFormats).isNotNull();
     assertThat(sourceFormats.size()).isEqualTo(2);
+    
+    SourceFormat result1 = sourceFormats.stream()
+        .filter(f -> f.getName().equals(sf1.getName()))
+        .findFirst()
+        .orElse(null);
+    assertThat(result1).isNotNull();
+    assertThat(result1.getId()).isGreaterThan(0);
+    assertThat(result1.getName()).isEqualTo(sf1.getName());
+
+    SourceFormat result2 = sourceFormats.stream()
+        .filter(f -> f.getName().equals(sf2.getName()))
+        .findFirst()
+        .orElse(null);
+    assertThat(result2).isNotNull();
+    assertThat(result2.getId()).isGreaterThan(0);
+    assertThat(result2.getName()).isEqualTo(sf2.getName());
   }
   
   @Test
