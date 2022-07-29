@@ -14,6 +14,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -44,7 +45,22 @@ public class AddServiceE2ETests extends TestDataProviders {
         .expectStatus()
         .isBadRequest()
         .expectBody(String.class).isEqualTo(ErrorMessages.VALIDATION_ERROR);
+  }
+  
+  @Test
+  public void shouldReturn_415_whenMediaTypeIsIncorrect(){
     
+    // Act && Assert
+    this.webTestClient
+        .post()
+        .uri("/sourceformat")
+        .contentType(MediaType.APPLICATION_XML)
+        .bodyValue(
+            "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
+            "<advice xmlns=\"http://www.springframework.org/schema/cache\"></advice>")
+        .exchange()
+        .expectStatus()
+        .isEqualTo(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
   }
   
   @Test
