@@ -5,9 +5,6 @@ trigger:
 
 pool: 'contabo'
 
-#variables:
-#  solutionName: 'EncyclopediaGalactica.sln'
-
 stages:
   - stage: Variables
     jobs:
@@ -22,14 +19,9 @@ stages:
   - stage: Feature_branch
     condition: ne(variables['System.PullRequest.SourceBranch'], '')
     jobs:
-      #      - job: restore_solution
-      #        displayName: Restore Solution
-      #        steps:
-      #          - script: dotnet restore $solutionName
 
       - job: build_solution
         displayName: Build Solution
-        #        dependsOn: restore_solution
         steps:
           - script: mvn compile -f pom.xml
 
@@ -42,14 +34,9 @@ stages:
   - stage: Main_branch
     condition: and(eq(variables['System.PullRequest.SourceBranch'], ''), eq(variables['Build.SourceBranch'],'refs/heads/main'))
     jobs:
-      #      - job: restore_solution
-      #        displayName: Restore Solution
-      #        steps:
-      #          - script: dotnet restore $solutionName
 
       - job: build_solution
         displayName: Build Solution
-        #        dependsOn: restore_solution
         steps:
           - script: mvn compile -f pom.xml
 
