@@ -29,7 +29,7 @@ stages:
         displayName: Test Solution
         dependsOn: build_solution
         steps:
-          - script: mvn test -f pom.xml
+          - script: mvn clean install -f pom.xml
 
   - stage: Main_branch
     condition: and(eq(variables['System.PullRequest.SourceBranch'], ''), eq(variables['Build.SourceBranch'],'refs/heads/main'))
@@ -44,5 +44,5 @@ stages:
         displayName: Test Solution
         dependsOn: build_solution
         steps:
-          - script: mvn test -f pom.xml
+          - script: mvn clean install -f pom.xml
     
