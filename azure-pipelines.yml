@@ -4,8 +4,8 @@ trigger:
       - main
 
 pool: 'contabo'
-#variables:
-#  sonar.token: $(sonar.token)
+variables:
+  SONAR_TOKEN: $(sonar.token)
 
 stages:
   - stage: Variables
