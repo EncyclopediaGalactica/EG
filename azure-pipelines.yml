@@ -4,6 +4,8 @@ trigger:
       - main
 
 pool: 'contabo'
+variables:
+  sonar.token: $(sonar.token)
 
 stages:
   - stage: Variables
@@ -15,6 +17,8 @@ stages:
               env | sort
               mvn --version
               java -version
+              echo $SONAR_TOKEN
+              echo $(SONAR_TOKEN)
 
   - stage: Feature_branch
     condition: ne(variables['System.PullRequest.SourceBranch'], '')
@@ -30,6 +34,12 @@ stages:
         dependsOn: build_solution
         steps:
           - script: mvn clean install -f pom.xml
+
+      - job: sonar_analyze
+        displayName: Sonar Analyze
+        dependsOn: test_solution
+        steps:
+          - script: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=EncyclopediaGalactica_EG
 
   - stage: Main_branch
     condition: and(eq(variables['System.PullRequest.SourceBranch'], ''), eq(variables['Build.SourceBranch'],'refs/heads/main'))
