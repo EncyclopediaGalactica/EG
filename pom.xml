@@ -13,7 +13,7 @@
     <groupId>com.encyclopedia-galactica.services</groupId>
     <artifactId>eg-sourceformat</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SourceFormat service</name>
+    <name>SourceFormat Service</name>
     <description>SourceFormat service</description>
 
     <packaging>jar</packaging>
