@@ -5,9 +5,6 @@ trigger:
 
 pool: 'contabo'
 
-#variables:
-#  solutionName: 'EncyclopediaGalactica.sln'
-
 stages:
   - stage: Variables
     jobs:
@@ -22,14 +19,9 @@ stages:
   - stage: Feature_branch
     condition: ne(variables['System.PullRequest.SourceBranch'], '')
     jobs:
-      #      - job: restore_solution
-      #        displayName: Restore Solution
-      #        steps:
-      #          - script: dotnet restore $solutionName
 
       - job: build_solution
         displayName: Build Solution
-        #        dependsOn: restore_solution
         steps:
           - script: mvn compile -f pom.xml
 
@@ -37,19 +29,25 @@ stages:
         displayName: Test Solution
         dependsOn: build_solution
         steps:
-          - script: mvn test -f pom.xml
+          - script: mvn clean install -f pom.xml
+
+      - job: sonar_analyze
+        displayName: Sonar Analyze
+        dependsOn: test_solution
+        steps:
+          - script: |
+              mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+              -Dsonar.organization=$(SONAR_ORGANIZATION) \
+              -Dsonar.projectKey=$(SONAR_PROJECT_KEY) \
+              -Dsonar.host.url=$(SONAR_HOST_URL) \
+              -Dsonar.login=$(SONAR_TOKEN)
 
   - stage: Main_branch
     condition: and(eq(variables['System.PullRequest.SourceBranch'], ''), eq(variables['Build.SourceBranch'],'refs/heads/main'))
     jobs:
-      #      - job: restore_solution
-      #        displayName: Restore Solution
-      #        steps:
-      #          - script: dotnet restore $solutionName
 
       - job: build_solution
         displayName: Build Solution
-        #        dependsOn: restore_solution
         steps:
           - script: mvn compile -f pom.xml
 
@@ -57,5 +55,5 @@ stages:
         displayName: Test Solution
         dependsOn: build_solution
         steps:
-          - script: mvn test -f pom.xml
+          - script: mvn clean install -f pom.xml
     

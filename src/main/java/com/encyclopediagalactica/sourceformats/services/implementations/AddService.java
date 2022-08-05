@@ -20,15 +20,12 @@ public class AddService implements AddServiceInterface {
 
   private final SourceFormatRepository repository;
   private final SourceFormatMapperInterface mapper;
-  private final Validator validator;
 
   public AddService(
       @NonNull SourceFormatRepository repository,
-      @NonNull SourceFormatMapperInterface mapper,
-      @NonNull Validator validator) {
+      @NonNull SourceFormatMapperInterface mapper) {
     this.repository = repository;
     this.mapper = mapper;
-    this.validator = validator; 
   }
 
   @Override

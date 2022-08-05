@@ -9,15 +9,19 @@
         <version>2.7.1</version>
         <relativePath/>
     </parent>
-    
+
     <groupId>com.encyclopedia-galactica.services</groupId>
     <artifactId>eg-sourceformat</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SourceFormat service</name>
+    <name>SourceFormat Service</name>
     <description>SourceFormat service</description>
 
     <packaging>jar</packaging>
-    
+
+    <properties>
+        <jacoco.version>0.8.8</jacoco.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,14 +85,50 @@
             <classifier>osx-aarch_64</classifier>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

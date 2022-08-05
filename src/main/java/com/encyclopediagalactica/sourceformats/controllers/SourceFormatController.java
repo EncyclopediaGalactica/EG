@@ -46,6 +46,6 @@ public class SourceFormatController {
   public ResponseEntity<SourceFormatDto> add(@RequestBody SourceFormatDto dto) {
     
     SourceFormatDto result = addService.add(dto);
-    return new ResponseEntity<SourceFormatDto>(result, HttpStatus.CREATED);
+    return new ResponseEntity<>(result, HttpStatus.CREATED);
   }
 }
