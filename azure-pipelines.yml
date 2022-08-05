@@ -18,6 +18,7 @@ stages:
               mvn --version
               java -version
               echo $SONAR_TOKEN
+              echo "token"
               echo $(SONAR_TOKEN)
 
   - stage: Feature_branch
