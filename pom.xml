@@ -19,8 +19,6 @@
     <packaging>jar</packaging>
 
     <properties>
-        <sonar.organization>encyclopedia-galactica</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <jacoco.version>0.8.8</jacoco.version>
     </properties>
 

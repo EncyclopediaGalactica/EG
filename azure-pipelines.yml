@@ -17,8 +17,8 @@ stages:
               env | sort
               mvn --version
               java -version
-              echo $SONAR_TOKEN
-              echo "token"
+              echo "Sonar token: ${SONAR_TOKEN}"
+              echo "Sonar another token: "
               echo $(SONAR_TOKEN)
 
   - stage: Feature_branch
@@ -40,7 +40,12 @@ stages:
         displayName: Sonar Analyze
         dependsOn: test_solution
         steps:
-          - script: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=EncyclopediaGalactica_EG
+          - script: |
+              mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+              -Dsonar.organization=$(SONAR_ORGANIZATION) \
+              -Dsonar.projectKey=$(SONAR_PROJECT_KEY) \
+              -Dsonar.host.url=$(SONAR_HOST_URL) \
+              -Dsonar.login=$(SONAR_TOKEN)
 
   - stage: Main_branch
     condition: and(eq(variables['System.PullRequest.SourceBranch'], ''), eq(variables['Build.SourceBranch'],'refs/heads/main'))
