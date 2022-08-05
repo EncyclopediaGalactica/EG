@@ -15,9 +15,6 @@ stages:
               env | sort
               mvn --version
               java -version
-              echo "Sonar token: ${SONAR_TOKEN}"
-              echo "Sonar another token: "
-              echo $(SONAR_TOKEN)
 
   - stage: Feature_branch
     condition: ne(variables['System.PullRequest.SourceBranch'], '')
