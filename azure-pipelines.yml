@@ -56,4 +56,15 @@ stages:
         dependsOn: build_solution
         steps:
           - script: mvn clean install -f pom.xml
+            
+      - job: sonar_analyze
+        displayName: Sonar Analyze
+        dependsOn: test_solution
+        steps:
+          - script: |
+              mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+              -Dsonar.organization=$(SONAR_ORGANIZATION) \
+              -Dsonar.projectKey=$(SONAR_PROJECT_KEY) \
+              -Dsonar.host.url=$(SONAR_HOST_URL) \
+              -Dsonar.login=$(SONAR_TOKEN)
     
