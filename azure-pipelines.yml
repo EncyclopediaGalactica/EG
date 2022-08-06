@@ -40,7 +40,12 @@ stages:
               -Dsonar.organization=$(SONAR_ORGANIZATION) \
               -Dsonar.projectKey=$(SONAR_PROJECT_KEY) \
               -Dsonar.host.url=$(SONAR_HOST_URL) \
-              -Dsonar.login=$(SONAR_TOKEN)
+              -Dsonar.login=$(SONAR_TOKEN) \
+              -Dsonar.pullrequest.key=$(System.PullRequest.PullRequestNumber) \
+              -Dsonar.pullrequest.branch=$(System.PullRequest.SourceBranch) \
+              -Dsonar.pullrequest.base=main \
+              -Dsonar.pullrequest.provider=GitHub \
+              -Dsonar.pullrequest.github.repository=EncyclopediaGalactica/EG
 
   - stage: Main_branch
     condition: and(eq(variables['System.PullRequest.SourceBranch'], ''), eq(variables['Build.SourceBranch'],'refs/heads/main'))
@@ -56,7 +61,7 @@ stages:
         dependsOn: build_solution
         steps:
           - script: mvn clean install -f pom.xml
-            
+
       - job: sonar_analyze
         displayName: Sonar Analyze
         dependsOn: test_solution
