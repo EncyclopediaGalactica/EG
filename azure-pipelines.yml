@@ -23,7 +23,7 @@ stages:
       - job: build_solution
         displayName: Build Solution
         steps:
-          - script: mvn compile -f pom.xml
+          - script: mvn clean compile -f pom.xml
 
       - job: test_solution
         displayName: Test Solution
@@ -54,7 +54,7 @@ stages:
       - job: build_solution
         displayName: Build Solution
         steps:
-          - script: mvn compile -f pom.xml
+          - script: mvn clean compile -f pom.xml
 
       - job: test_solution
         displayName: Test Solution
