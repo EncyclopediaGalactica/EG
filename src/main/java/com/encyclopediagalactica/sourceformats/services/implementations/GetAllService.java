@@ -26,7 +26,6 @@ public class GetAllService implements GetAllServiceInterface {
   @Override
   public List<SourceFormatDto> getAll() {
     List<SourceFormat> sourceFormats = (List<SourceFormat>) repository.findAll();
-    List<SourceFormatDto> sourceFormatDtos = sourceFormatMapper.mapSourceFormatsToSourceFormatDtos(sourceFormats);
-    return sourceFormatDtos;
+    return sourceFormatMapper.mapSourceFormatsToSourceFormatDtos(sourceFormats);
   }
 }

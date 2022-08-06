@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+@SuppressWarnings("NewClassNamingConvention")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SourceFormatMappers_EntityListToDtoList_Tests {
 
@@ -26,9 +27,7 @@ public class SourceFormatMappers_EntityListToDtoList_Tests {
   @Test
   public void shouldThrowWhen_InputIsNull() {
     // Act & Assert
-    assertThatThrownBy(() -> {
-      sut.mapSourceFormatsToSourceFormatDtos(null);
-    }).isInstanceOf(NullPointerException.class);
+    assertThatThrownBy(() -> sut.mapSourceFormatsToSourceFormatDtos(null)).isInstanceOf(NullPointerException.class);
   }
 
   @Test
@@ -49,15 +48,17 @@ public class SourceFormatMappers_EntityListToDtoList_Tests {
     List<SourceFormatDto> result = sut.mapSourceFormatsToSourceFormatDtos(sourceFormats);
 
     // Result
-    assertThat(result.stream().count()).isEqualTo(2);
+    assertThat((long) result.size()).isEqualTo(2);
     SourceFormatDto first = result.stream().filter(f -> f.getId() == firstId)
         .findAny()
         .orElse(null);
+    assertThat(first).isNotNull();
     assertThat(first.getId()).isEqualTo(firstId);
     assertThat(first.getName()).isEqualTo(firstName);
     SourceFormatDto second = result.stream().filter(f -> f.getId() == secondId)
         .findAny()
         .orElse(null);
+    assertThat(second).isNotNull();
     assertThat(second.getId()).isEqualTo(secondId);
     assertThat(second.getName()).isEqualTo(secondName);
   }

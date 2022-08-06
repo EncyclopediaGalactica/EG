@@ -39,11 +39,11 @@ public class SaveTests {
     assertThat(result.getId()).isGreaterThan(0);
     assertThat(result.getName()).isEqualTo(sourceFormat.getName());
   }
-  
+
   @Test
   public void shouldThrow_whenNullInputIsProvided() {
-    
+
     // Act
-    assertThatThrownBy(() -> {sourceFormatRepository.save(null);}).isInstanceOf(InvalidDataAccessApiUsageException.class);
+    assertThatThrownBy(() -> sourceFormatRepository.save(null)).isInstanceOf(InvalidDataAccessApiUsageException.class);
   }
 }
