@@ -28,9 +28,7 @@ public class DeleteByIdServiceInputValidationTests {
   void shouldThrow_whenInputIsInvalid() {
 
     // Act && Assert
-    assertThatThrownBy(() -> {
-      this.deleteByIdService.deleteById(0L);
-    }).isInstanceOf(InvalidDataAccessApiUsageException.class);
+    assertThatThrownBy(() -> this.deleteByIdService.deleteById(0L)).isInstanceOf(InvalidDataAccessApiUsageException.class);
   }
 
 }

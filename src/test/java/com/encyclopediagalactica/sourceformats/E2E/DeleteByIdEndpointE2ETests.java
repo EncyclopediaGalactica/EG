@@ -57,6 +57,7 @@ public class DeleteByIdEndpointE2ETests {
         .returnResult().getResponseBody();
 
     // Act
+    assertThat(dto1Result).isNotNull();
     this.webTestClient
         .delete()
         .uri("/sourceformats/" + dto1Result.getId())
@@ -74,6 +75,7 @@ public class DeleteByIdEndpointE2ETests {
     assertThat(result).isNotNull();
     assertThat(result).isNotEmpty();
     assertThat(result.size()).isEqualTo(1);
+    assertThat(dto2Result).isNotNull();
     SourceFormatDto res = result.stream().filter(f -> f.getName().equals(dto2Result.getName()))
         .findFirst()
         .orElse(null);

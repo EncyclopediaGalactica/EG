@@ -3,14 +3,11 @@ package com.encyclopediagalactica.sourceformats.services.sourceformat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import javax.validation.ConstraintViolationException;
-import java.util.stream.Stream;
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
 import com.encyclopediagalactica.sourceformats.testdata.TestDataProviders;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,10 +31,7 @@ public class AddServiceInputValidationTests extends TestDataProviders {
   @MethodSource("sourceFormat_new_entity_dto_inputValidationProvider")
   public void shouldThrow_whenInputIsInvalid(String name) {
     // Act && Assert
-    assertThatThrownBy(() -> {
-      addService.add(
-          SourceFormatDto.builder().name(name).build()
-      );
-    }).isInstanceOf(ConstraintViolationException.class);
+    assertThatThrownBy(() -> addService.add(SourceFormatDto.builder().name(name).build()))
+        .isInstanceOf(ConstraintViolationException.class);
   }
 }

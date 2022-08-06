@@ -24,34 +24,34 @@ import org.springframework.test.context.TestPropertySource;
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class DeleteByIdTests {
-  
+
   @Autowired
   private SourceFormatRepository repository;
-  
+
   @Test
   public void shouldDelete() {
-    
+
     // Arrange
     SourceFormat sf = new SourceFormat("asd");
     SourceFormat sfResult = repository.save(sf);
-    
+
     // Act
     repository.deleteById(sfResult.getId());
-    
+
     // Assert
     List<SourceFormat> getAll = (List<SourceFormat>) repository.findAll();
     assertThat(getAll.size()).isEqualTo(0);
   }
-  
+
   @Test
   public void shouldThrow_whenThereIsNoEntityToBeDeleted() {
     // Act && Assert
-    assertThatThrownBy(() -> {repository.deleteById(100L);}).isInstanceOf(EmptyResultDataAccessException.class);
+    assertThatThrownBy(() -> repository.deleteById(100L)).isInstanceOf(EmptyResultDataAccessException.class);
   }
-  
+
   @Test
   public void shouldThrow_whenInputIsInvalid() {
     // Act && Assert
-    assertThatThrownBy(() -> {repository.deleteById(null);}).isInstanceOf(InvalidDataAccessApiUsageException.class);
+    assertThatThrownBy(() -> repository.deleteById(null)).isInstanceOf(InvalidDataAccessApiUsageException.class);
   }
 }

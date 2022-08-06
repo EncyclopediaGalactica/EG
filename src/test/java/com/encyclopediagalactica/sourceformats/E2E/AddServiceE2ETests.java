@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.errors.ErrorMessages;
 import com.encyclopediagalactica.sourceformats.testdata.TestDataProviders;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -25,7 +24,7 @@ public class AddServiceE2ETests extends TestDataProviders {
 
   @ParameterizedTest
   @MethodSource("sourceFormat_new_entity_dto_inputValidationProvider")
-  public void shouldReturn_400_whenInputIsInvalid(String name) throws JsonProcessingException {
+  public void shouldReturn_400_whenInputIsInvalid(String name) {
 
     // Arrange
     SourceFormatDto dto = SourceFormatDto.builder().name(name).build();
@@ -77,6 +76,7 @@ public class AddServiceE2ETests extends TestDataProviders {
         .returnResult()
         .getResponseBody();
 
+    assertThat(result).isNotNull();
     assertThat(result.getName()).isNotNull();
     assertThat(result.getName()).isEqualTo(dto.getName());
     assertThat(result.getId()).isGreaterThan(0);

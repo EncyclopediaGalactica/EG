@@ -18,6 +18,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+@SuppressWarnings("unused")
 @SpringBootTest
 @ContextConfiguration(classes = SourceFormatServiceApplication.class)
 @TestPropertySource(
@@ -40,9 +41,7 @@ class DeleteByIdServiceTests {
   void shouldThrow_whenCtorInjectIsNull() {
 
     // Act && Assert
-    assertThatThrownBy(() -> {
-      new DeleteByIdService(null);
-    }).isInstanceOf(NullPointerException.class);
+    assertThatThrownBy(() -> new DeleteByIdService(null)).isInstanceOf(NullPointerException.class);
   }
 
   @Test
@@ -74,9 +73,7 @@ class DeleteByIdServiceTests {
   void shouldThrow_whenNoSuchEntity() {
 
     // Act & Assert
-    assertThatThrownBy(() -> {
-      this.deleteByIdService.deleteById(100L);
-    }).isInstanceOf(EmptyResultDataAccessException.class);
+    assertThatThrownBy(() -> this.deleteByIdService.deleteById(100L)).isInstanceOf(EmptyResultDataAccessException.class);
 
   }
 

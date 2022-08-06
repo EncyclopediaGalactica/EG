@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+@SuppressWarnings("NewClassNamingConvention")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SourceFormatMappers_SingleDtoToEntity_Tests {
 
@@ -24,9 +25,7 @@ public class SourceFormatMappers_SingleDtoToEntity_Tests {
   @Test
   public void shouldThrowWhen_InputIsNull() {
     // Act & Assert
-    assertThatThrownBy(() -> {
-      sut.mapSourceFormatDtoToSourceFormat(null);
-    }).isInstanceOf(NullPointerException.class);
+    assertThatThrownBy(() -> sut.mapSourceFormatDtoToSourceFormat(null)).isInstanceOf(NullPointerException.class);
   }
 
   @Test

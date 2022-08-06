@@ -31,9 +31,7 @@ public class SourceFormatControllerTests {
     GetAllServiceInterface getAllService = null;
 
     // Act && Assert
-    assertThatThrownBy(() -> {
-      new SourceFormatController(getAllService, addService, deleteByIdService);
-    }).isInstanceOf(NullPointerException.class);
+    assertThatThrownBy(() -> new SourceFormatController(getAllService, addService, deleteByIdService)).isInstanceOf(NullPointerException.class);
   }
 
   @Test
@@ -44,9 +42,7 @@ public class SourceFormatControllerTests {
     GetAllServiceInterface getAllService = new GetAllService(sourceFormatRepository, mapper);
 
     // Act && Assert
-    assertThatThrownBy(() -> {
-      new SourceFormatController(getAllService, addService, deleteByIdService);
-    }).isInstanceOf(NullPointerException.class);
+    assertThatThrownBy(() -> new SourceFormatController(getAllService, addService, deleteByIdService)).isInstanceOf(NullPointerException.class);
   }
 
   @Test
@@ -57,8 +53,6 @@ public class SourceFormatControllerTests {
     GetAllServiceInterface getAllService = new GetAllService(sourceFormatRepository, mapper);
 
     // Act && Assert
-    assertThatThrownBy(() -> {
-      new SourceFormatController(getAllService, addService, deleteByIdService);
-    }).isInstanceOf(NullPointerException.class);
+    assertThatThrownBy(() -> new SourceFormatController(getAllService, addService, deleteByIdService)).isInstanceOf(NullPointerException.class);
   }
 }

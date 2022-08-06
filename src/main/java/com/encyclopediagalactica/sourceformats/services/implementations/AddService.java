@@ -31,45 +31,44 @@ public class AddService implements AddServiceInterface {
   @Override
   public SourceFormatDto add(
       @NonNull @Valid SourceFormatDto dto) {
-    
+
     this.trimDtoStringProperties(dto);
     this.validateInputDto(dto);
     SourceFormat sourceFormat = mapper.mapSourceFormatDtoToSourceFormat(dto);
-    
+
     this.trimEntityStringProperties(sourceFormat);
     this.validateEntity(sourceFormat);
     SourceFormat result = repository.save(sourceFormat);
-    SourceFormatDto resultDto = mapper.mapSourceFormatToSourceFormatDto(result);
-    
-    return resultDto;
+
+    return mapper.mapSourceFormatToSourceFormatDto(result);
   }
-  
+
   private void trimDtoStringProperties(SourceFormatDto dto) {
-    if(dto.getName() != null) {
+    if (dto.getName() != null) {
       dto.setName(dto.getName().trim());
     }
   }
-  
+
   private void validateInputDto(SourceFormatDto dto) {
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     Validator validator = factory.getValidator();
     Set<ConstraintViolation<SourceFormatDto>> violations = validator.validate(dto);
-    if(!violations.isEmpty()){
+    if (!violations.isEmpty()) {
       throw new ConstraintViolationException(violations);
     }
   }
-  
+
   private void trimEntityStringProperties(SourceFormat sf) {
-    if(sf.getName() != null) {
+    if (sf.getName() != null) {
       sf.setName(sf.getName().trim());
     }
   }
-  
+
   private void validateEntity(SourceFormat sourceFormat) {
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     Validator validator = factory.getValidator();
     Set<ConstraintViolation<SourceFormat>> violations = validator.validate(sourceFormat);
-    if(!violations.isEmpty()){
+    if (!violations.isEmpty()) {
       throw new ConstraintViolationException(violations);
     }
   }

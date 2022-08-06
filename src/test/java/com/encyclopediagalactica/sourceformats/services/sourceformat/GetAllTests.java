@@ -14,6 +14,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+@SuppressWarnings("unused")
 @SpringBootTest
 @ContextConfiguration(classes = SourceFormatServiceApplication.class)
 @TestPropertySource(
@@ -22,25 +23,25 @@ import org.springframework.test.context.TestPropertySource;
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class GetAllTests {
-  
+
   @Autowired
   private GetAllServiceInterface getAllService;
-  
+
   @Autowired
   private AddServiceInterface addService;
-  
+
   @Test
   public void shouldReturn_ListOfObjects() {
-    
+
     // Arrange
     SourceFormatDto dto1 = SourceFormatDto.builder().name("asd").build();
     SourceFormatDto dto2 = SourceFormatDto.builder().name("asdd").build();
     SourceFormatDto dtoResult1 = this.addService.add(dto1);
     SourceFormatDto dtoResult2 = this.addService.add(dto2);
-    
+
     // Act
     List<SourceFormatDto> result = this.getAllService.getAll();
-    
+
     // Assert
     assertThat((long) result.size()).isEqualTo(2);
     SourceFormatDto result1 = result.stream()
@@ -50,7 +51,7 @@ public class GetAllTests {
     assertThat(result1).isNotNull();
     assertThat(result1.getId()).isGreaterThan(0);
     assertThat(result1.getName()).isEqualTo(dto1.getName());
-    
+
     SourceFormatDto result2 = result.stream()
         .filter(f -> f.getName().equals(dto2.getName()))
         .findFirst()
@@ -59,13 +60,12 @@ public class GetAllTests {
     assertThat(result2.getId()).isGreaterThan(0);
     assertThat(result2.getName()).isEqualTo(dto2.getName());
   }
-  
+
   @Test
-  public void shouldReturn_emptyList_whenNoEntitiesInTheDb()
-  {
+  public void shouldReturn_emptyList_whenNoEntitiesInTheDb() {
     // Act
     List<SourceFormatDto> result = this.getAllService.getAll();
-    
+
     // Assert
     assertThat(result).isNotNull();
     assertThat(result.size()).isEqualTo(0);
