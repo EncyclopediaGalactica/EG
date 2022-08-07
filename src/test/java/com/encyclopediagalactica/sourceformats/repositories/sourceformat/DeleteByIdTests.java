@@ -15,6 +15,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @DataJpaTest
 @ContextConfiguration(
     classes = com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication.class)
@@ -49,6 +50,7 @@ public class DeleteByIdTests {
     assertThatThrownBy(() -> repository.deleteById(100L)).isInstanceOf(EmptyResultDataAccessException.class);
   }
 
+  @SuppressWarnings("ConstantConditions")
   @Test
   public void shouldThrow_whenInputIsInvalid() {
     // Act && Assert

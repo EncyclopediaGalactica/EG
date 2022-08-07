@@ -12,6 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @DataJpaTest
 @ContextConfiguration(
     classes = com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication.class)

@@ -14,6 +14,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @DataJpaTest
 @ContextConfiguration(classes = SourceFormatServiceApplication.class)
 @TestPropertySource(
@@ -40,6 +41,7 @@ public class SaveTests {
     assertThat(result.getName()).isEqualTo(sourceFormat.getName());
   }
 
+  @SuppressWarnings("ConstantConditions")
   @Test
   public void shouldThrow_whenNullInputIsProvided() {
 

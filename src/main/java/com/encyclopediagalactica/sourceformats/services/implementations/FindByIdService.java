@@ -9,6 +9,7 @@ import lombok.NonNull;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
 public class FindByIdService implements FindByIdServiceInterface {
 

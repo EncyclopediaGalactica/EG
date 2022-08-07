@@ -9,6 +9,7 @@ import com.encyclopediagalactica.sourceformats.services.interfaces.GetAllService
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
 public class GetAllService implements GetAllServiceInterface {
 
