@@ -25,7 +25,7 @@ public class AddServiceTests {
   private AddServiceInterface addService;
 
   @Test
-  public void shouldAdd() {
+  void shouldAdd() {
 
     // Arrange
     SourceFormatDto dto = new SourceFormatDto(100L, "asd");

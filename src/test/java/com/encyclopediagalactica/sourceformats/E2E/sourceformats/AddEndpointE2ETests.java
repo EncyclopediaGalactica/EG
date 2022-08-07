@@ -24,7 +24,7 @@ public class AddEndpointE2ETests extends CreateNewEntityValidationDataProviders 
 
   @ParameterizedTest
   @MethodSource("sourceFormat_new_entity_dto_inputValidationProvider")
-  public void shouldReturn_400_whenInputIsInvalid(String name) {
+  void shouldReturn_400_whenInputIsInvalid(String name) {
 
     // Arrange
     SourceFormatDto dto = SourceFormatDto.builder().name(name).build();
@@ -42,7 +42,7 @@ public class AddEndpointE2ETests extends CreateNewEntityValidationDataProviders 
   }
 
   @Test
-  public void shouldReturn_415_whenMediaTypeIsIncorrect() {
+  void shouldReturn_415_whenMediaTypeIsIncorrect() {
 
     // Act && Assert
     this.webTestClient
@@ -58,7 +58,7 @@ public class AddEndpointE2ETests extends CreateNewEntityValidationDataProviders 
   }
 
   @Test
-  public void shouldReturn_201_whenANewEntityIsCreated() {
+  void shouldReturn_201_whenANewEntityIsCreated() {
 
     // Arrange
     SourceFormatDto dto = SourceFormatDto.builder().name("name").build();

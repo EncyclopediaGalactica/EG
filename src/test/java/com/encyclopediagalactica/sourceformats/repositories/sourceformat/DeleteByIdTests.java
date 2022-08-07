@@ -30,7 +30,7 @@ public class DeleteByIdTests {
   private SourceFormatRepository repository;
 
   @Test
-  public void shouldDelete() {
+  void shouldDelete() {
 
     // Arrange
     SourceFormat sf = new SourceFormat("asd");
@@ -45,14 +45,14 @@ public class DeleteByIdTests {
   }
 
   @Test
-  public void shouldThrow_whenThereIsNoEntityToBeDeleted() {
+  void shouldThrow_whenThereIsNoEntityToBeDeleted() {
     // Act && Assert
     assertThatThrownBy(() -> repository.deleteById(100L)).isInstanceOf(EmptyResultDataAccessException.class);
   }
 
   @SuppressWarnings("ConstantConditions")
   @Test
-  public void shouldThrow_whenInputIsInvalid() {
+  void shouldThrow_whenInputIsInvalid() {
     // Act && Assert
     assertThatThrownBy(() -> repository.deleteById(null)).isInstanceOf(InvalidDataAccessApiUsageException.class);
   }

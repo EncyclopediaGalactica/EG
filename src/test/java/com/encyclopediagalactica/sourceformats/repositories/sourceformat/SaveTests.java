@@ -28,7 +28,7 @@ public class SaveTests {
   private SourceFormatRepository sourceFormatRepository;
 
   @Test
-  public void shouldSave_andReturnWithTheSavedOne() {
+  void shouldSave_andReturnWithTheSavedOne() {
 
     // Arrange
     SourceFormat sourceFormat = new SourceFormat("asdd");
@@ -43,7 +43,7 @@ public class SaveTests {
 
   @SuppressWarnings("ConstantConditions")
   @Test
-  public void shouldThrow_whenNullInputIsProvided() {
+  void shouldThrow_whenNullInputIsProvided() {
 
     // Act
     assertThatThrownBy(() -> sourceFormatRepository.save(null)).isInstanceOf(InvalidDataAccessApiUsageException.class);

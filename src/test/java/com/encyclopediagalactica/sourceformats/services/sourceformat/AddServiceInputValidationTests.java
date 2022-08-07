@@ -29,7 +29,7 @@ public class AddServiceInputValidationTests extends CreateNewEntityValidationDat
 
   @ParameterizedTest
   @MethodSource("sourceFormat_new_entity_dto_inputValidationProvider")
-  public void shouldThrow_whenInputIsInvalid(String name) {
+  void shouldThrow_whenInputIsInvalid(String name) {
     // Act && Assert
     assertThatThrownBy(() -> addService.add(SourceFormatDto.builder().name(name).build()))
         .isInstanceOf(ConstraintViolationException.class);

@@ -19,7 +19,7 @@ public class GetAllEndpointE2ETests {
   private WebTestClient webTestClient;
 
   @Test
-  public void shouldReturn_200_and_listOfDtos_whenThereIsDataInTheDatabase() {
+  void shouldReturn_200_and_listOfDtos_whenThereIsDataInTheDatabase() {
 
     // Arrange
     SourceFormatDto dto1 = SourceFormatDto.builder().name("name1").build();
@@ -53,7 +53,7 @@ public class GetAllEndpointE2ETests {
   }
 
   @Test
-  public void shouldReturn_200_and_emptyList_whenThereAreNoEntitiesInTheDatabase() {
+  void shouldReturn_200_and_emptyList_whenThereAreNoEntitiesInTheDatabase() {
     // Act && Assert
     List<SourceFormatDto> result = this.webTestClient.get().uri("/sourceformats")
         .accept(MediaType.APPLICATION_JSON)

@@ -25,13 +25,13 @@ public class SourceFormatMappers_EntityListToDtoList_Tests {
   }
 
   @Test
-  public void shouldThrowWhen_InputIsNull() {
+  void shouldThrowWhen_InputIsNull() {
     // Act & Assert
     assertThatThrownBy(() -> sut.mapSourceFormatsToSourceFormatDtos(null)).isInstanceOf(NullPointerException.class);
   }
 
   @Test
-  public void shouldMap() {
+  void shouldMap() {
 
     // Arrange
     long firstId = 100L;
