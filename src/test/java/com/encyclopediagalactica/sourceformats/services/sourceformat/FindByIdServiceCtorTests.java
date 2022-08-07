@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 @SuppressWarnings({"ConstantConditions", "SpringJavaInjectionPointsAutowiringInspection"})
 @SpringBootTest
 @ContextConfiguration(classes = SourceFormatServiceApplication.class)
-public class FindByIdServiceCtorTests {
+class FindByIdServiceCtorTests {
 
   @Autowired
   private SourceFormatRepository sourceFormatRepository;

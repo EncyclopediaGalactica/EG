@@ -15,7 +15,7 @@ import org.junit.jupiter.api.TestInstance;
 
 @SuppressWarnings("NewClassNamingConvention")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class SourceFormatMappers_EntityListToDtoList_Tests {
+class SourceFormatMappers_EntityListToDtoList_Tests {
 
   private SourceFormatMapperInterface sut;
 

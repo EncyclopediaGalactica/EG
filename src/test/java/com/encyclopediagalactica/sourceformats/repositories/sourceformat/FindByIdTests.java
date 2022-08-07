@@ -24,7 +24,7 @@ import org.springframework.test.context.TestPropertySource;
         "spring.jpa.hibernate.ddl-auto=create-drop"
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class FindByIdTests extends FindByIdInputValidationDataProviders {
+class FindByIdTests extends FindByIdInputValidationDataProviders {
 
   @Autowired
   private SourceFormatRepository sourceFormatRepository;

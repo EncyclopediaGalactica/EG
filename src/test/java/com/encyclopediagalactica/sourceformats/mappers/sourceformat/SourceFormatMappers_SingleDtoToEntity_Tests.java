@@ -13,7 +13,7 @@ import org.junit.jupiter.api.TestInstance;
 
 @SuppressWarnings("NewClassNamingConvention")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class SourceFormatMappers_SingleDtoToEntity_Tests {
+class SourceFormatMappers_SingleDtoToEntity_Tests {
 
   private SourceFormatMapperInterface sut;
 

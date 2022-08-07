@@ -13,7 +13,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class DeleteByIdEndpointE2ETests {
+class DeleteByIdEndpointE2ETests {
 
   @Autowired
   private WebTestClient webTestClient;

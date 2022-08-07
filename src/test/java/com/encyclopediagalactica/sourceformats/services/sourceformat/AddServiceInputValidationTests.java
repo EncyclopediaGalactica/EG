@@ -22,7 +22,7 @@ import org.springframework.test.context.TestPropertySource;
         "spring.jpa.hibernate.ddl-auto=create-drop"
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class AddServiceInputValidationTests extends CreateNewEntityValidationDataProviders {
+class AddServiceInputValidationTests extends CreateNewEntityValidationDataProviders {
 
   @Autowired
   private AddServiceInterface addService;
