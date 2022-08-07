@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.controllers;
+package com.encyclopediagalactica.sourceformats.controllers.handlers;
 
 import javax.validation.ConstraintViolationException;
 import com.encyclopediagalactica.sourceformats.errors.ErrorMessages;
@@ -12,11 +12,14 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
-  
-  @ExceptionHandler(value = {ConstraintViolationException.class, InvalidDataAccessApiUsageException.class})
-  protected ResponseEntity<Object> handleConflict(RuntimeException runtimeException, WebRequest webRequest
-  ) {
+public class ValidationErrorBadRequestExceptionHandler extends ResponseEntityExceptionHandler {
+
+  @ExceptionHandler(
+      value = {
+          ConstraintViolationException.class,
+          InvalidDataAccessApiUsageException.class
+      })
+  protected ResponseEntity<Object> handleConflict(RuntimeException runtimeException, WebRequest webRequest) {
     return handleExceptionInternal(
         runtimeException,
         ErrorMessages.VALIDATION_ERROR,
@@ -24,5 +27,5 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         HttpStatus.BAD_REQUEST,
         webRequest);
   }
-  
+
 }

@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.E2E;
+package com.encyclopediagalactica.sourceformats.E2E.sourceformats;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

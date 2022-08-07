@@ -2,19 +2,19 @@ package com.encyclopediagalactica.sourceformats.services.sourceformat;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import javax.validation.ConstraintViolationException;
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
-import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
-import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
-import com.encyclopediagalactica.sourceformats.testdata.sourceformats.CreateNewEntityValidationDataProviders;
+import com.encyclopediagalactica.sourceformats.services.interfaces.FindByIdServiceInterface;
+import com.encyclopediagalactica.sourceformats.testdata.sourceformats.FindByIdInputValidationDataProviders;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+@SuppressWarnings("unused")
 @SpringBootTest
 @ContextConfiguration(classes = SourceFormatServiceApplication.class)
 @TestPropertySource(
@@ -22,16 +22,17 @@ import org.springframework.test.context.TestPropertySource;
         "spring.jpa.hibernate.ddl-auto=create-drop"
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class AddServiceInputValidationTests extends CreateNewEntityValidationDataProviders {
+public class FindByIdServiceInputValidationTests extends FindByIdInputValidationDataProviders {
 
   @Autowired
-  private AddServiceInterface addService;
+  private FindByIdServiceInterface findByIdService;
 
   @ParameterizedTest
-  @MethodSource("sourceFormat_new_entity_dto_inputValidationProvider")
-  public void shouldThrow_whenInputIsInvalid(String name) {
+  @MethodSource("input_validation_service_level")
+  void shouldThrow_whenInputIsZero(Long id) {
+
     // Act && Assert
-    assertThatThrownBy(() -> addService.add(SourceFormatDto.builder().name(name).build()))
-        .isInstanceOf(ConstraintViolationException.class);
+    assertThatThrownBy(() -> findByIdService.findById(id)).isInstanceOf(InvalidDataAccessApiUsageException.class);
   }
+
 }

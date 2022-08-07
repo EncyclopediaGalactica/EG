@@ -41,6 +41,7 @@ public interface SourceFormatBaseRepository<T, ID> extends PagingAndSortingRepos
    *
    * @param id must not be {@literal null}.
    * @return Optional including entity if exists
+   * @throws IllegalArgumentException – if id is null.
    */
   Optional<T> findById(ID id);
 }

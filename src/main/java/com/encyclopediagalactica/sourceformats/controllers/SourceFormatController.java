@@ -4,6 +4,7 @@ import java.util.List;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.interfaces.DeleteByIdServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.interfaces.FindByIdServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.interfaces.GetAllServiceInterface;
 import lombok.NonNull;
 import org.springframework.http.HttpStatus;
@@ -24,13 +25,17 @@ public class SourceFormatController {
   private final AddServiceInterface addService;
   private final DeleteByIdServiceInterface deleteByIdService;
 
+  private final FindByIdServiceInterface findByIdService;
+
   public SourceFormatController(
       @NonNull GetAllServiceInterface getAllService,
       @NonNull AddServiceInterface addService,
-      @NonNull DeleteByIdServiceInterface deleteByIdService) {
+      @NonNull DeleteByIdServiceInterface deleteByIdService,
+      @NonNull FindByIdServiceInterface findByIdService) {
     this.getAllService = getAllService;
     this.addService = addService;
     this.deleteByIdService = deleteByIdService;
+    this.findByIdService = findByIdService;
   }
 
   @GetMapping(
@@ -38,6 +43,15 @@ public class SourceFormatController {
   @ResponseBody
   public List<SourceFormatDto> getAll() {
     return getAllService.getAll();
+  }
+
+  @GetMapping(
+      value = "/sourceformats/{id}"
+  )
+  @ResponseBody
+  public ResponseEntity<SourceFormatDto> getById(@PathVariable long id) {
+    SourceFormatDto result = this.findByIdService.findById(id);
+    return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
   @PostMapping(

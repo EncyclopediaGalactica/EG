@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.E2E;
+package com.encyclopediagalactica.sourceformats.E2E.sourceformats;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,7 +13,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class GetAllServiceE2ETests {
+public class GetAllEndpointE2ETests {
 
   @Autowired
   private WebTestClient webTestClient;
