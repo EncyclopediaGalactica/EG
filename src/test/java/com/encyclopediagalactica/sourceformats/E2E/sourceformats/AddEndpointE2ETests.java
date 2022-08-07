@@ -1,10 +1,10 @@
-package com.encyclopediagalactica.sourceformats.E2E;
+package com.encyclopediagalactica.sourceformats.E2E.sourceformats;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.errors.ErrorMessages;
-import com.encyclopediagalactica.sourceformats.testdata.TestDataProviders;
+import com.encyclopediagalactica.sourceformats.testdata.sourceformats.CreateNewEntityValidationDataProviders;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -17,14 +17,14 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class AddServiceE2ETests extends TestDataProviders {
+class AddEndpointE2ETests extends CreateNewEntityValidationDataProviders {
 
   @Autowired
   private WebTestClient webTestClient;
 
   @ParameterizedTest
   @MethodSource("sourceFormat_new_entity_dto_inputValidationProvider")
-  public void shouldReturn_400_whenInputIsInvalid(String name) {
+  void shouldReturn_400_whenInputIsInvalid(String name) {
 
     // Arrange
     SourceFormatDto dto = SourceFormatDto.builder().name(name).build();
@@ -42,7 +42,7 @@ public class AddServiceE2ETests extends TestDataProviders {
   }
 
   @Test
-  public void shouldReturn_415_whenMediaTypeIsIncorrect() {
+  void shouldReturn_415_whenMediaTypeIsIncorrect() {
 
     // Act && Assert
     this.webTestClient
@@ -58,7 +58,7 @@ public class AddServiceE2ETests extends TestDataProviders {
   }
 
   @Test
-  public void shouldReturn_201_whenANewEntityIsCreated() {
+  void shouldReturn_201_whenANewEntityIsCreated() {
 
     // Arrange
     SourceFormatDto dto = SourceFormatDto.builder().name("name").build();

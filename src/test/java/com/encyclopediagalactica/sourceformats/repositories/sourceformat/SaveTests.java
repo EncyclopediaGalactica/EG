@@ -14,6 +14,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @DataJpaTest
 @ContextConfiguration(classes = SourceFormatServiceApplication.class)
 @TestPropertySource(
@@ -21,13 +22,13 @@ import org.springframework.test.context.TestPropertySource;
         "spring.jpa.hibernate.ddl-auto=create-drop"
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class SaveTests {
+class SaveTests {
 
   @Autowired
   private SourceFormatRepository sourceFormatRepository;
 
   @Test
-  public void shouldSave_andReturnWithTheSavedOne() {
+  void shouldSave_andReturnWithTheSavedOne() {
 
     // Arrange
     SourceFormat sourceFormat = new SourceFormat("asdd");
@@ -40,8 +41,9 @@ public class SaveTests {
     assertThat(result.getName()).isEqualTo(sourceFormat.getName());
   }
 
+  @SuppressWarnings("ConstantConditions")
   @Test
-  public void shouldThrow_whenNullInputIsProvided() {
+  void shouldThrow_whenNullInputIsProvided() {
 
     // Act
     assertThatThrownBy(() -> sourceFormatRepository.save(null)).isInstanceOf(InvalidDataAccessApiUsageException.class);

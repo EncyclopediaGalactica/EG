@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.E2E;
+package com.encyclopediagalactica.sourceformats.E2E.sourceformats;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,13 +13,13 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class GetAllServiceE2ETests {
+class GetAllEndpointE2ETests {
 
   @Autowired
   private WebTestClient webTestClient;
 
   @Test
-  public void shouldReturn_200_and_listOfDtos_whenThereIsDataInTheDatabase() {
+  void shouldReturn_200_and_listOfDtos_whenThereIsDataInTheDatabase() {
 
     // Arrange
     SourceFormatDto dto1 = SourceFormatDto.builder().name("name1").build();
@@ -53,7 +53,7 @@ public class GetAllServiceE2ETests {
   }
 
   @Test
-  public void shouldReturn_200_and_emptyList_whenThereAreNoEntitiesInTheDatabase() {
+  void shouldReturn_200_and_emptyList_whenThereAreNoEntitiesInTheDatabase() {
     // Act && Assert
     List<SourceFormatDto> result = this.webTestClient.get().uri("/sourceformats")
         .accept(MediaType.APPLICATION_JSON)

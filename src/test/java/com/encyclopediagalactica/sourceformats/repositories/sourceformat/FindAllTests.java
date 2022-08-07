@@ -12,6 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @DataJpaTest
 @ContextConfiguration(
     classes = com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication.class)
@@ -20,16 +21,13 @@ import org.springframework.test.context.TestPropertySource;
         "spring.jpa.hibernate.ddl-auto=create-drop"
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class FindAllTests {
+class FindAllTests {
 
   @Autowired
   private SourceFormatRepository repository;
 
-  public FindAllTests() {
-  }
-
   @Test
-  public void shouldReturnAll() {
+  void shouldReturnAll() {
 
     // Arrange
     SourceFormat sf1 = new SourceFormat(100L, "asd");
@@ -43,7 +41,7 @@ public class FindAllTests {
     // Assert
     assertThat(sourceFormats).isNotNull();
     assertThat(sourceFormats.size()).isEqualTo(2);
-    
+
     SourceFormat result1 = sourceFormats.stream()
         .filter(f -> f.getName().equals(sf1.getName()))
         .findFirst()
@@ -60,13 +58,13 @@ public class FindAllTests {
     assertThat(result2.getId()).isGreaterThan(0);
     assertThat(result2.getName()).isEqualTo(sf2.getName());
   }
-  
+
   @Test
-  public void shouldReturnEmptyList_whenTheDatabaseIsEmpty() {
-    
+  void shouldReturnEmptyList_whenTheDatabaseIsEmpty() {
+
     // Act
     List<SourceFormat> result = (List<SourceFormat>) repository.findAll();
-    
+
     // Assert
     assertThat(result.size()).isEqualTo(0);
   }

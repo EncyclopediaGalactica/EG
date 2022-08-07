@@ -6,6 +6,7 @@ import lombok.NonNull;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
 public class DeleteByIdService implements DeleteByIdServiceInterface {
 

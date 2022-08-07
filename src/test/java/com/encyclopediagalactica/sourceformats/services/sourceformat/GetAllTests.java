@@ -22,7 +22,7 @@ import org.springframework.test.context.TestPropertySource;
         "spring.jpa.hibernate.ddl-auto=create-drop"
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class GetAllTests {
+class GetAllTests {
 
   @Autowired
   private GetAllServiceInterface getAllService;
@@ -31,7 +31,7 @@ public class GetAllTests {
   private AddServiceInterface addService;
 
   @Test
-  public void shouldReturn_ListOfObjects() {
+  void shouldReturn_ListOfObjects() {
 
     // Arrange
     SourceFormatDto dto1 = SourceFormatDto.builder().name("asd").build();
@@ -62,7 +62,7 @@ public class GetAllTests {
   }
 
   @Test
-  public void shouldReturn_emptyList_whenNoEntitiesInTheDb() {
+  void shouldReturn_emptyList_whenNoEntitiesInTheDb() {
     // Act
     List<SourceFormatDto> result = this.getAllService.getAll();
 

@@ -1,9 +1,9 @@
-package com.encyclopediagalactica.sourceformats.testdata;
+package com.encyclopediagalactica.sourceformats.testdata.sourceformats;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
 
-public class TestDataProviders {
+public class CreateNewEntityValidationDataProviders {
 
   protected static Stream<Arguments> sourceFormat_new_entity_dto_inputValidationProvider() {
     return Stream.of(
@@ -18,5 +18,5 @@ public class TestDataProviders {
                 "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas", true)
     );
   }
-  
+
 }

@@ -15,6 +15,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @DataJpaTest
 @ContextConfiguration(
     classes = com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication.class)
@@ -23,13 +24,13 @@ import org.springframework.test.context.TestPropertySource;
         "spring.jpa.hibernate.ddl-auto=create-drop"
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class DeleteByIdTests {
+class DeleteByIdTests {
 
   @Autowired
   private SourceFormatRepository repository;
 
   @Test
-  public void shouldDelete() {
+  void shouldDelete() {
 
     // Arrange
     SourceFormat sf = new SourceFormat("asd");
@@ -44,13 +45,14 @@ public class DeleteByIdTests {
   }
 
   @Test
-  public void shouldThrow_whenThereIsNoEntityToBeDeleted() {
+  void shouldThrow_whenThereIsNoEntityToBeDeleted() {
     // Act && Assert
     assertThatThrownBy(() -> repository.deleteById(100L)).isInstanceOf(EmptyResultDataAccessException.class);
   }
 
+  @SuppressWarnings("ConstantConditions")
   @Test
-  public void shouldThrow_whenInputIsInvalid() {
+  void shouldThrow_whenInputIsInvalid() {
     // Act && Assert
     assertThatThrownBy(() -> repository.deleteById(null)).isInstanceOf(InvalidDataAccessApiUsageException.class);
   }

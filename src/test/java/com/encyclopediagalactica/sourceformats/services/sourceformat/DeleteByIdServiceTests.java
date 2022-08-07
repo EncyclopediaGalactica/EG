@@ -37,6 +37,7 @@ class DeleteByIdServiceTests {
   @Autowired
   private GetAllServiceInterface getAllService;
 
+  @SuppressWarnings("ConstantConditions")
   @Test
   void shouldThrow_whenCtorInjectIsNull() {
 
