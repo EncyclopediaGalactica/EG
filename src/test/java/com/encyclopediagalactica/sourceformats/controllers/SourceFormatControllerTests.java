@@ -12,11 +12,13 @@ import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInt
 import com.encyclopediagalactica.sourceformats.services.interfaces.DeleteByIdServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.interfaces.FindByIdServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.interfaces.GetAllServiceInterface;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SuppressWarnings({"ConstantConditions", "SpringJavaInjectionPointsAutowiringInspection"})
+@Tag("integration")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SourceFormatControllerTests {
 

@@ -10,6 +10,7 @@ import com.encyclopediagalactica.sourceformats.services.implementations.DeleteBy
 import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.interfaces.DeleteByIdServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.interfaces.GetAllServiceInterface;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +27,7 @@ import org.springframework.test.context.TestPropertySource;
         "spring.jpa.hibernate.ddl-auto=create-drop"
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@Tag("integration")
 class DeleteByIdServiceTests {
 
   @Autowired
