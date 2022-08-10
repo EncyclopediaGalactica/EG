@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.Stream;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -16,7 +17,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class FindByIdEndpointE2ETests {
+@Tag("e2e")
+public class FindByIdEndpointE2ETests {
 
   @Autowired
   private WebTestClient webTestClient;

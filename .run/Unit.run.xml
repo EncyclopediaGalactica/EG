@@ -1,13 +1,14 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Whole project" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+  <configuration default="false" name="Unit" type="JUnit" factoryName="JUnit">
     <module name="eg-sourceformat" />
     <option name="PACKAGE_NAME" value="" />
     <option name="MAIN_CLASS_NAME" value="" />
     <option name="METHOD_NAME" value="" />
-    <option name="TEST_OBJECT" value="package" />
+    <option name="TEST_OBJECT" value="tags" />
     <option name="TEST_SEARCH_SCOPE">
       <value defaultName="wholeProject" />
     </option>
+    <tag value="unit" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

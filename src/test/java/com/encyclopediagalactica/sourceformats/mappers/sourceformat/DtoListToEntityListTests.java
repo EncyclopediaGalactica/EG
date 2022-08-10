@@ -10,12 +10,14 @@ import com.encyclopediagalactica.sourceformats.entities.SourceFormat;
 import com.encyclopediagalactica.sourceformats.mappers.implementations.SourceFormatMapper;
 import com.encyclopediagalactica.sourceformats.mappers.interfaces.SourceFormatMapperInterface;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 @SuppressWarnings("NewClassNamingConvention")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class SourceFormatMappers_DtoListToEntityList_Tests {
+@Tag("unit")
+class DtoListToEntityListTests {
 
   private SourceFormatMapperInterface sut;
 
