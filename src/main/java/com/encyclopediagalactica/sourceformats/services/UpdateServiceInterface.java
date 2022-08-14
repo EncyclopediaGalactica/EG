@@ -1,21 +1,24 @@
-package com.encyclopediagalactica.sourceformats.services.interfaces;
+package com.encyclopediagalactica.sourceformats.services;
 
 import javax.validation.ConstraintViolationException;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 
-public interface AddServiceInterface {
-
+public interface UpdateServiceInterface {
   /**
-   * Creates a new SourceFormat entity in the system based on the data
-   * provided by the DTO object as parameter.
-   * 
-   * @param dto the DTO object containing properties of the new entity
-   * @return a SourceFormatDto object containing properties of the newly created entity
+   * Updates the given SourceFormat entity.
+   *
+   * <p>
+   * The provider DTO's Id value designates which entity should be updated.
+   * The DTO further properties designate what is the new value of the properties.
+   * </p>
+   *
+   * @param dto the DTO which contains the new values for properties
+   * @return SourceFormatDto which contains the new properties
    * @throws ConstraintViolationException in case of validation error
    * @throws InvalidDataAccessApiUsageException when null input is provided for the repository
    * @throws EmptyResultDataAccessException in case of no such entity in the database
    */
-  SourceFormatDto add(SourceFormatDto dto);
+  SourceFormatDto updateById(SourceFormatDto dto);
 }

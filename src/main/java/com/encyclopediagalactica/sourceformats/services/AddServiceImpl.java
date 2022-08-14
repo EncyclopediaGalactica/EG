@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.services.implementations;
+package com.encyclopediagalactica.sourceformats.services;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -11,27 +11,23 @@ import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.entities.SourceFormat;
 import com.encyclopediagalactica.sourceformats.mappers.interfaces.SourceFormatMapperInterface;
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
-import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
-public class AddService implements AddServiceInterface {
+public class AddServiceImpl implements AddServiceInterface {
 
   private final SourceFormatRepository repository;
   private final SourceFormatMapperInterface mapper;
 
-  public AddService(
-      @NonNull SourceFormatRepository repository,
-      @NonNull SourceFormatMapperInterface mapper) {
+  public AddServiceImpl(@NonNull SourceFormatRepository repository, @NonNull SourceFormatMapperInterface mapper) {
     this.repository = repository;
     this.mapper = mapper;
   }
 
   @Override
-  public SourceFormatDto add(
-      @NonNull @Valid SourceFormatDto dto) {
+  public SourceFormatDto add(@NonNull @Valid SourceFormatDto dto) {
 
     this.trimDtoStringProperties(dto);
     this.validateInputDto(dto);

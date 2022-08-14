@@ -1,7 +1,6 @@
-package com.encyclopediagalactica.sourceformats.services.implementations;
+package com.encyclopediagalactica.sourceformats.services;
 
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
-import com.encyclopediagalactica.sourceformats.services.interfaces.DeleteByIdServiceInterface;
 import lombok.NonNull;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;

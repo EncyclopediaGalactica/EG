@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import javax.validation.ConstraintViolationException;
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
-import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.AddServiceInterface;
 import com.encyclopediagalactica.sourceformats.testdata.sourceformats.CreateNewEntityValidationDataProviders;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;

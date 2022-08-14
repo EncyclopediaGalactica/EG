@@ -3,7 +3,7 @@ package com.encyclopediagalactica.sourceformats.services.sourceformat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
-import com.encyclopediagalactica.sourceformats.services.interfaces.FindByIdServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.FindByIdServiceInterface;
 import com.encyclopediagalactica.sourceformats.testdata.sourceformats.FindByIdInputValidationDataProviders;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;

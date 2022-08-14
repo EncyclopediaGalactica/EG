@@ -2,10 +2,10 @@ package com.encyclopediagalactica.sourceformats.controllers;
 
 import java.util.List;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
-import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
-import com.encyclopediagalactica.sourceformats.services.interfaces.DeleteByIdServiceInterface;
-import com.encyclopediagalactica.sourceformats.services.interfaces.FindByIdServiceInterface;
-import com.encyclopediagalactica.sourceformats.services.interfaces.GetAllServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.AddServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.DeleteByIdServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.FindByIdServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.GetAllServiceInterface;
 import lombok.NonNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.services.interfaces;
+package com.encyclopediagalactica.sourceformats.services;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;

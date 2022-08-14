@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
 import com.encyclopediagalactica.sourceformats.mappers.implementations.SourceFormatMapper;
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
-import com.encyclopediagalactica.sourceformats.services.implementations.FindByIdService;
+import com.encyclopediagalactica.sourceformats.services.FindByIdService;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
