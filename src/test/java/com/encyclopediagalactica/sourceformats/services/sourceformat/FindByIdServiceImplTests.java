@@ -25,7 +25,7 @@ import org.springframework.test.context.TestPropertySource;
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @Tag("integration")
-class FindByIdServiceTests {
+class FindByIdServiceImplTests {
 
   @Autowired
   private FindByIdServiceInterface findByIdService;

@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
-public class DeleteByIdService implements DeleteByIdServiceInterface {
+public class DeleteByIdServiceImpl implements DeleteByIdServiceInterface {
 
   private final SourceFormatRepository sourceFormatRepository;
 
-  public DeleteByIdService(@NonNull SourceFormatRepository sourceFormatRepository) {
+  public DeleteByIdServiceImpl(@NonNull SourceFormatRepository sourceFormatRepository) {
     this.sourceFormatRepository = sourceFormatRepository;
   }
 

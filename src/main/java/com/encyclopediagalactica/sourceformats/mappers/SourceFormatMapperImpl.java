@@ -1,17 +1,16 @@
-package com.encyclopediagalactica.sourceformats.mappers.implementations;
+package com.encyclopediagalactica.sourceformats.mappers;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.entities.SourceFormat;
-import com.encyclopediagalactica.sourceformats.mappers.interfaces.SourceFormatMapperInterface;
 import com.sun.istack.NotNull;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SourceFormatMapper implements SourceFormatMapperInterface {
+public class SourceFormatMapperImpl implements SourceFormatMapperInterface {
 
   @Override
   public SourceFormatDto mapSourceFormatToSourceFormatDto(

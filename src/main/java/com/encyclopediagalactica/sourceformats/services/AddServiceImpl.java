@@ -9,7 +9,7 @@ import java.util.Set;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.entities.SourceFormat;
 import com.encyclopediagalactica.sourceformats.entities.validation.SourceFormatAddValidationGroup;
-import com.encyclopediagalactica.sourceformats.mappers.interfaces.SourceFormatMapperInterface;
+import com.encyclopediagalactica.sourceformats.mappers.SourceFormatMapperInterface;
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;

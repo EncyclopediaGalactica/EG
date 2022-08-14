@@ -3,19 +3,19 @@ package com.encyclopediagalactica.sourceformats.services;
 import java.util.List;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.entities.SourceFormat;
-import com.encyclopediagalactica.sourceformats.mappers.interfaces.SourceFormatMapperInterface;
+import com.encyclopediagalactica.sourceformats.mappers.SourceFormatMapperInterface;
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
-public class GetAllService implements GetAllServiceInterface {
+public class GetAllServiceImpl implements GetAllServiceInterface {
 
   private final SourceFormatRepository repository;
   private final SourceFormatMapperInterface sourceFormatMapper;
 
-  public GetAllService(
+  public GetAllServiceImpl(
       @NonNull SourceFormatRepository repository,
       @NonNull SourceFormatMapperInterface sourceFormatMapper) {
 

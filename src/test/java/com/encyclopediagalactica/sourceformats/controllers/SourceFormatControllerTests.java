@@ -2,15 +2,15 @@ package com.encyclopediagalactica.sourceformats.controllers;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.encyclopediagalactica.sourceformats.mappers.implementations.SourceFormatMapper;
+import com.encyclopediagalactica.sourceformats.mappers.SourceFormatMapperImpl;
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
 import com.encyclopediagalactica.sourceformats.services.AddServiceImpl;
 import com.encyclopediagalactica.sourceformats.services.AddServiceInterface;
-import com.encyclopediagalactica.sourceformats.services.DeleteByIdService;
+import com.encyclopediagalactica.sourceformats.services.DeleteByIdServiceImpl;
 import com.encyclopediagalactica.sourceformats.services.DeleteByIdServiceInterface;
-import com.encyclopediagalactica.sourceformats.services.FindByIdService;
+import com.encyclopediagalactica.sourceformats.services.FindByIdServiceImpl;
 import com.encyclopediagalactica.sourceformats.services.FindByIdServiceInterface;
-import com.encyclopediagalactica.sourceformats.services.GetAllService;
+import com.encyclopediagalactica.sourceformats.services.GetAllServiceImpl;
 import com.encyclopediagalactica.sourceformats.services.GetAllServiceInterface;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -26,15 +26,15 @@ public class SourceFormatControllerTests {
   private SourceFormatRepository sourceFormatRepository;
 
   @Autowired
-  private SourceFormatMapper mapper;
+  private SourceFormatMapperImpl mapper;
 
   @Test
   void shouldThrow_whenGetAllService_ctorInjectIsNull() {
     // Arrange
     GetAllServiceInterface getAllService = null;
     AddServiceInterface addService = new AddServiceImpl(sourceFormatRepository, mapper);
-    DeleteByIdServiceInterface deleteByIdService = new DeleteByIdService(sourceFormatRepository);
-    FindByIdServiceInterface findByIdService = new FindByIdService(mapper, sourceFormatRepository);
+    DeleteByIdServiceInterface deleteByIdService = new DeleteByIdServiceImpl(sourceFormatRepository);
+    FindByIdServiceInterface findByIdService = new FindByIdServiceImpl(mapper, sourceFormatRepository);
 
     // Act && Assert
     assertThatThrownBy(() -> new SourceFormatController(
@@ -48,10 +48,10 @@ public class SourceFormatControllerTests {
   @Test
   void shouldThrow_whenAddService_ctorInjectIsNull() {
     // Arrange
-    GetAllServiceInterface getAllService = new GetAllService(sourceFormatRepository, mapper);
+    GetAllServiceInterface getAllService = new GetAllServiceImpl(sourceFormatRepository, mapper);
     AddServiceInterface addService = null;
-    DeleteByIdServiceInterface deleteByIdService = new DeleteByIdService(sourceFormatRepository);
-    FindByIdServiceInterface findByIdService = new FindByIdService(mapper, sourceFormatRepository);
+    DeleteByIdServiceInterface deleteByIdService = new DeleteByIdServiceImpl(sourceFormatRepository);
+    FindByIdServiceInterface findByIdService = new FindByIdServiceImpl(mapper, sourceFormatRepository);
 
     // Act && Assert
     assertThatThrownBy(() -> new SourceFormatController(
@@ -65,10 +65,10 @@ public class SourceFormatControllerTests {
   @Test
   void shouldThrow_whenDeleteByIdService_ctorInjectIsNull() {
     // Arrange
-    GetAllServiceInterface getAllService = new GetAllService(sourceFormatRepository, mapper);
+    GetAllServiceInterface getAllService = new GetAllServiceImpl(sourceFormatRepository, mapper);
     AddServiceInterface addService = new AddServiceImpl(sourceFormatRepository, mapper);
     DeleteByIdServiceInterface deleteByIdService = null;
-    FindByIdServiceInterface findByIdService = new FindByIdService(mapper, sourceFormatRepository);
+    FindByIdServiceInterface findByIdService = new FindByIdServiceImpl(mapper, sourceFormatRepository);
 
     // Act && Assert
     assertThatThrownBy(() -> new SourceFormatController(
@@ -82,9 +82,9 @@ public class SourceFormatControllerTests {
   @Test
   void shouldThrow_whenFindByIdService_ctorInjectIsNull() {
     // Arrange
-    GetAllServiceInterface getAllService = new GetAllService(sourceFormatRepository, mapper);
+    GetAllServiceInterface getAllService = new GetAllServiceImpl(sourceFormatRepository, mapper);
     AddServiceInterface addService = new AddServiceImpl(sourceFormatRepository, mapper);
-    DeleteByIdServiceInterface deleteByIdService = new DeleteByIdService(sourceFormatRepository);
+    DeleteByIdServiceInterface deleteByIdService = new DeleteByIdServiceImpl(sourceFormatRepository);
     FindByIdServiceInterface findByIdService = null;
 
     // Act && Assert

@@ -3,7 +3,7 @@ package com.encyclopediagalactica.sourceformats.services.sourceformat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
-import com.encyclopediagalactica.sourceformats.mappers.implementations.SourceFormatMapper;
+import com.encyclopediagalactica.sourceformats.mappers.SourceFormatMapperImpl;
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
 import com.encyclopediagalactica.sourceformats.services.UpdateServiceImpl;
 import org.junit.jupiter.api.Tag;
@@ -33,7 +33,7 @@ public class UpdateValidationCtorTests {
   public void shouldThrow_whenInjectedRepositoryIsNull() {
 
     // Act && Assert
-    assertThatThrownBy(() -> new UpdateServiceImpl(new SourceFormatMapper(), null))
+    assertThatThrownBy(() -> new UpdateServiceImpl(new SourceFormatMapperImpl(), null))
         .isInstanceOf(NullPointerException.class);
   }
 }

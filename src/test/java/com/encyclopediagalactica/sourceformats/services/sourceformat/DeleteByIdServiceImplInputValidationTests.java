@@ -21,7 +21,7 @@ import org.springframework.test.context.TestPropertySource;
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @Tag("integration")
-class DeleteByIdServiceInputValidationTests {
+class DeleteByIdServiceImplInputValidationTests {
 
   @Autowired
   private DeleteByIdServiceInterface deleteByIdService;

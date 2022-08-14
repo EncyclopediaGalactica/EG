@@ -3,9 +3,9 @@ package com.encyclopediagalactica.sourceformats.services.sourceformat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
-import com.encyclopediagalactica.sourceformats.mappers.implementations.SourceFormatMapper;
+import com.encyclopediagalactica.sourceformats.mappers.SourceFormatMapperImpl;
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
-import com.encyclopediagalactica.sourceformats.services.FindByIdService;
+import com.encyclopediagalactica.sourceformats.services.FindByIdServiceImpl;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 @SpringBootTest
 @ContextConfiguration(classes = SourceFormatServiceApplication.class)
 @Tag("unit")
-class FindByIdServiceCtorTests {
+class FindByIdServiceImplCtorTests {
 
   @Autowired
   private SourceFormatRepository sourceFormatRepository;
@@ -25,7 +25,7 @@ class FindByIdServiceCtorTests {
   void shouldThrow_whenInjectedRepositoryIsNull() {
 
     // Act && Assert
-    assertThatThrownBy(() -> new FindByIdService(new SourceFormatMapper(), null))
+    assertThatThrownBy(() -> new FindByIdServiceImpl(new SourceFormatMapperImpl(), null))
         .isInstanceOf(NullPointerException.class);
   }
 
@@ -33,7 +33,7 @@ class FindByIdServiceCtorTests {
   void shouldThrow_whenInjectedMapperIsNull() {
 
     // Act && Assert
-    assertThatThrownBy(() -> new FindByIdService(null, sourceFormatRepository))
+    assertThatThrownBy(() -> new FindByIdServiceImpl(null, sourceFormatRepository))
         .isInstanceOf(NullPointerException.class);
   }
 }
