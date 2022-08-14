@@ -12,7 +12,9 @@ import com.encyclopediagalactica.sourceformats.entities.validation.SourceFormatU
 import com.encyclopediagalactica.sourceformats.mappers.interfaces.SourceFormatMapperInterface;
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
 import lombok.NonNull;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UpdateServiceImpl implements UpdateServiceInterface {
 
   private final Validator validator;
@@ -31,6 +33,7 @@ public class UpdateServiceImpl implements UpdateServiceInterface {
 
   @Override
   public SourceFormatDto updateById(@NonNull SourceFormatDto dto) {
+    trimDtoValues(dto);
     validateInput(dto);
     SourceFormat updateValues = mapper.mapSourceFormatDtoToSourceFormat(dto);
     validateInputSourceFormat(updateValues);
@@ -56,7 +59,7 @@ public class UpdateServiceImpl implements UpdateServiceInterface {
       throw new ConstraintViolationException(violations);
     }
   }
-  
+
   private void validateInput(SourceFormatDto dto) {
     Set<ConstraintViolation<SourceFormatDto>> violations = validator.validate(
         dto,
@@ -64,6 +67,12 @@ public class UpdateServiceImpl implements UpdateServiceInterface {
 
     if (!violations.isEmpty()) {
       throw new ConstraintViolationException(violations);
+    }
+  }
+
+  private void trimDtoValues(SourceFormatDto dto) {
+    if (dto.getName() != null && !dto.getName().isEmpty() && !dto.getName().isBlank()) {
+      dto.setName(dto.getName().trim());
     }
   }
 
