@@ -6,6 +6,7 @@ import com.encyclopediagalactica.sourceformats.services.AddServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.DeleteByIdServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.FindByIdServiceInterface;
 import com.encyclopediagalactica.sourceformats.services.GetAllServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.UpdateServiceInterface;
 import lombok.NonNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -24,6 +26,7 @@ public class SourceFormatController {
   private final GetAllServiceInterface getAllService;
   private final AddServiceInterface addService;
   private final DeleteByIdServiceInterface deleteByIdService;
+  private final UpdateServiceInterface updateService;
 
   private final FindByIdServiceInterface findByIdService;
 
@@ -31,11 +34,13 @@ public class SourceFormatController {
       @NonNull GetAllServiceInterface getAllService,
       @NonNull AddServiceInterface addService,
       @NonNull DeleteByIdServiceInterface deleteByIdService,
-      @NonNull FindByIdServiceInterface findByIdService) {
+      @NonNull FindByIdServiceInterface findByIdService,
+      @NonNull UpdateServiceInterface updateService) {
     this.getAllService = getAllService;
     this.addService = addService;
     this.deleteByIdService = deleteByIdService;
     this.findByIdService = findByIdService;
+    this.updateService = updateService;
   }
 
   @GetMapping(
@@ -51,6 +56,16 @@ public class SourceFormatController {
   @ResponseBody
   public ResponseEntity<SourceFormatDto> getById(@PathVariable long id) {
     SourceFormatDto result = this.findByIdService.findById(id);
+    return new ResponseEntity<>(result, HttpStatus.OK);
+  }
+
+  @PutMapping(
+      value = "/sourceformats/{id}",
+      consumes = "application/json"
+  )
+  @ResponseBody
+  public ResponseEntity<SourceFormatDto> update(@PathVariable long id, @RequestBody SourceFormatDto dto) {
+    SourceFormatDto result = updateService.updateById(dto);
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
