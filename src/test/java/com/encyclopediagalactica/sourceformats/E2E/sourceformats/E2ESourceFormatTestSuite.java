@@ -11,7 +11,8 @@ import org.junit.platform.suite.api.SuiteDisplayName;
         AddEndpointE2ETests.class,
         DeleteByIdEndpointE2ETests.class,
         FindByIdEndpointE2ETests.class,
-        GetAllEndpointE2ETests.class
+        GetAllEndpointE2ETests.class,
+        UpdateEndpointE2ETests.class
     })
 public class E2ESourceFormatTestSuite {
 }
