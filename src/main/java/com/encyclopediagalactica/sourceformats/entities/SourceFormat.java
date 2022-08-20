@@ -8,10 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import com.encyclopediagalactica.sourceformats.entities.validation.SourceFormatAddValidationGroup;
+import com.encyclopediagalactica.sourceformats.entities.validation.SourceFormatUpdateValidationGroup;
 import lombok.Getter;
 import lombok.Setter;
 //</editor-fold>
@@ -39,18 +42,41 @@ public class SourceFormat {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
+  @Min(
+      value = 1,
+      groups = SourceFormatUpdateValidationGroup.class
+  )
   private Long id;
 
   /**
    * Name of the SourceFormat
    */
   @Column(name = "name")
-  @NotNull
-  @NotEmpty
-  @NotBlank
+  @NotNull(
+      groups = {
+          SourceFormatAddValidationGroup.class,
+          SourceFormatUpdateValidationGroup.class
+      }
+  )
+  @NotEmpty(
+      groups = {
+          SourceFormatAddValidationGroup.class,
+          SourceFormatUpdateValidationGroup.class
+      }
+  )
+  @NotBlank(
+      groups = {
+          SourceFormatAddValidationGroup.class,
+          SourceFormatUpdateValidationGroup.class
+      }
+  )
   @Size(
       min = 3,
-      max = 255)
+      max = 255,
+      groups = {
+          SourceFormatAddValidationGroup.class,
+          SourceFormatUpdateValidationGroup.class
+      })
   private String name;
 
   //<editor-fold desc="ctor">

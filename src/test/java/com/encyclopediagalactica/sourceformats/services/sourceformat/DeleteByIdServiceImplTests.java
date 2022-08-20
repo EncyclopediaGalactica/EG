@@ -6,10 +6,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
-import com.encyclopediagalactica.sourceformats.services.implementations.DeleteByIdService;
-import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
-import com.encyclopediagalactica.sourceformats.services.interfaces.DeleteByIdServiceInterface;
-import com.encyclopediagalactica.sourceformats.services.interfaces.GetAllServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.AddServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.DeleteByIdServiceImpl;
+import com.encyclopediagalactica.sourceformats.services.DeleteByIdServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.GetAllServiceInterface;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ import org.springframework.test.context.TestPropertySource;
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @Tag("integration")
-class DeleteByIdServiceTests {
+class DeleteByIdServiceImplTests {
 
   @Autowired
   private AddServiceInterface addService;
@@ -44,7 +44,7 @@ class DeleteByIdServiceTests {
   void shouldThrow_whenCtorInjectIsNull() {
 
     // Act && Assert
-    assertThatThrownBy(() -> new DeleteByIdService(null)).isInstanceOf(NullPointerException.class);
+    assertThatThrownBy(() -> new DeleteByIdServiceImpl(null)).isInstanceOf(NullPointerException.class);
   }
 
   @Test

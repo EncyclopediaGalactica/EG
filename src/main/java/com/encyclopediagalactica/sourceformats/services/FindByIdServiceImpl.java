@@ -1,22 +1,21 @@
-package com.encyclopediagalactica.sourceformats.services.implementations;
+package com.encyclopediagalactica.sourceformats.services;
 
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.entities.SourceFormat;
-import com.encyclopediagalactica.sourceformats.mappers.interfaces.SourceFormatMapperInterface;
+import com.encyclopediagalactica.sourceformats.mappers.SourceFormatMapperInterface;
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
-import com.encyclopediagalactica.sourceformats.services.interfaces.FindByIdServiceInterface;
 import lombok.NonNull;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
-public class FindByIdService implements FindByIdServiceInterface {
+public class FindByIdServiceImpl implements FindByIdServiceInterface {
 
   private final SourceFormatMapperInterface mapper;
   private final SourceFormatRepository repository;
 
-  public FindByIdService(
+  public FindByIdServiceImpl(
       @NonNull SourceFormatMapperInterface mapper,
       @NonNull SourceFormatRepository repository) {
     this.mapper = mapper;

@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import com.encyclopediagalactica.sourceformats.entities.SourceFormat;
-import com.encyclopediagalactica.sourceformats.mappers.implementations.SourceFormatMapper;
-import com.encyclopediagalactica.sourceformats.mappers.interfaces.SourceFormatMapperInterface;
+import com.encyclopediagalactica.sourceformats.mappers.SourceFormatMapperImpl;
+import com.encyclopediagalactica.sourceformats.mappers.SourceFormatMapperInterface;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ class SingleEntityToDtoTests {
 
   @BeforeAll
   public void init() {
-    sut = new SourceFormatMapper();
+    sut = new SourceFormatMapperImpl();
   }
 
   @Test

@@ -1,18 +1,17 @@
-package com.encyclopediagalactica.sourceformats.services.implementations;
+package com.encyclopediagalactica.sourceformats.services;
 
 import com.encyclopediagalactica.sourceformats.repositories.SourceFormatRepository;
-import com.encyclopediagalactica.sourceformats.services.interfaces.DeleteByIdServiceInterface;
 import lombok.NonNull;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
-public class DeleteByIdService implements DeleteByIdServiceInterface {
+public class DeleteByIdServiceImpl implements DeleteByIdServiceInterface {
 
   private final SourceFormatRepository sourceFormatRepository;
 
-  public DeleteByIdService(@NonNull SourceFormatRepository sourceFormatRepository) {
+  public DeleteByIdServiceImpl(@NonNull SourceFormatRepository sourceFormatRepository) {
     this.sourceFormatRepository = sourceFormatRepository;
   }
 

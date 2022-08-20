@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.services.interfaces;
+package com.encyclopediagalactica.sourceformats.services;
 
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
 import org.springframework.dao.EmptyResultDataAccessException;

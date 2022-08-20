@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.mappers.interfaces;
+package com.encyclopediagalactica.sourceformats.mappers;
 
 import java.util.List;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;

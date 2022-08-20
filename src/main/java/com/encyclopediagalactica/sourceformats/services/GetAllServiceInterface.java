@@ -1,4 +1,4 @@
-package com.encyclopediagalactica.sourceformats.services.interfaces;
+package com.encyclopediagalactica.sourceformats.services;
 
 
 import java.util.List;
@@ -11,7 +11,7 @@ public interface GetAllServiceInterface {
 
   /**
    * It returns list of SourceFormatDtos representing entities in the database
-   * 
+   *
    * @return list of SourceFormatDtos
    */
   List<SourceFormatDto> getAll();

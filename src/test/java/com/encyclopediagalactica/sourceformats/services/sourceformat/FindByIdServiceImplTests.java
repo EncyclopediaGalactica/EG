@@ -6,8 +6,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.NoSuchElementException;
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
-import com.encyclopediagalactica.sourceformats.services.interfaces.AddServiceInterface;
-import com.encyclopediagalactica.sourceformats.services.interfaces.FindByIdServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.AddServiceInterface;
+import com.encyclopediagalactica.sourceformats.services.FindByIdServiceInterface;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ import org.springframework.test.context.TestPropertySource;
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @Tag("integration")
-class FindByIdServiceTests {
+class FindByIdServiceImplTests {
 
   @Autowired
   private FindByIdServiceInterface findByIdService;
