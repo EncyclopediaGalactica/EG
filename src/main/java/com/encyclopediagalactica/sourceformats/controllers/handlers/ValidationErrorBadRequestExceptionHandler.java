@@ -2,6 +2,7 @@ package com.encyclopediagalactica.sourceformats.controllers.handlers;
 
 import javax.validation.ConstraintViolationException;
 import com.encyclopediagalactica.sourceformats.errors.ErrorMessages;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,8 @@ public class ValidationErrorBadRequestExceptionHandler extends ResponseEntityExc
   @ExceptionHandler(
       value = {
           ConstraintViolationException.class,
-          InvalidDataAccessApiUsageException.class
+          InvalidDataAccessApiUsageException.class,
+          DataIntegrityViolationException.class
       })
   protected ResponseEntity<Object> handleConflict(RuntimeException runtimeException, WebRequest webRequest) {
     return handleExceptionInternal(

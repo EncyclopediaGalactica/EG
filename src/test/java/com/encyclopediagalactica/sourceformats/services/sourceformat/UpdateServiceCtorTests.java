@@ -16,7 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 @SpringBootTest
 @ContextConfiguration(classes = SourceFormatServiceApplication.class)
 @Tag("unit")
-public class UpdateValidationCtorTests {
+public class UpdateServiceCtorTests {
 
   @Autowired
   private SourceFormatRepository repository;

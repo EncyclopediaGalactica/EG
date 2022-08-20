@@ -82,4 +82,42 @@ public class UpdateEndpointE2ETests extends UpdateEntityValidationDataProviders 
         .expectStatus()
         .isBadRequest();
   }
+
+  @Test
+  void shouldReturn_400_whenUniqueNameConstraintIsViolated() {
+
+    // Arrange
+    SourceFormatDto dto = SourceFormatDto.builder().name("name").build();
+    SourceFormatDto dtoResult = webTestClient.post().uri("/sourceformats")
+        .contentType(MediaType.APPLICATION_JSON)
+        .bodyValue(dto)
+        .exchange()
+        .expectStatus()
+        .isCreated()
+        .expectBody(SourceFormatDto.class)
+        .returnResult()
+        .getResponseBody();
+
+    SourceFormatDto dto2 = SourceFormatDto.builder().name("namem").build();
+    SourceFormatDto dto2Result = webTestClient.post().uri("/sourceformats")
+        .contentType(MediaType.APPLICATION_JSON)
+        .bodyValue(dto2)
+        .exchange()
+        .expectStatus()
+        .isCreated()
+        .expectBody(SourceFormatDto.class)
+        .returnResult()
+        .getResponseBody();
+
+    // Act && Assert
+    assertThat(dto2Result).isNotNull();
+    SourceFormatDto updateDto = SourceFormatDto.builder().name("name").id(dto2Result.getId()).build();
+    webTestClient.put().uri("/sourceformats/" + dto2Result.getId())
+        .contentType(MediaType.APPLICATION_JSON)
+        .bodyValue(updateDto)
+        .exchange()
+        .expectStatus()
+        .isBadRequest();
+  }
+
 }

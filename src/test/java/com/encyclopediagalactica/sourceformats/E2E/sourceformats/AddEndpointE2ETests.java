@@ -44,6 +44,32 @@ public class AddEndpointE2ETests extends CreateNewEntityValidationDataProviders 
   }
 
   @Test
+  void shouldReturn_400_whenUniqueNameConstraintIsViolated() {
+    // Arrange
+    SourceFormatDto dto = SourceFormatDto.builder().name("name").build();
+
+    this.webTestClient
+        .post()
+        .uri("/sourceformats")
+        .contentType(MediaType.APPLICATION_JSON)
+        .bodyValue(dto)
+        .exchange()
+        .expectStatus()
+        .isCreated();
+
+    // Act && Assert
+    this.webTestClient
+        .post()
+        .uri("/sourceformats")
+        .contentType(MediaType.APPLICATION_JSON)
+        .bodyValue(dto)
+        .exchange()
+        .expectStatus()
+        .isBadRequest();
+
+  }
+
+  @Test
   void shouldReturn_415_whenMediaTypeIsIncorrect() {
 
     // Act && Assert
@@ -83,4 +109,5 @@ public class AddEndpointE2ETests extends CreateNewEntityValidationDataProviders 
     assertThat(result.getName()).isEqualTo(dto.getName());
     assertThat(result.getId()).isGreaterThan(0);
   }
+
 }

@@ -51,7 +51,10 @@ public class SourceFormat {
   /**
    * Name of the SourceFormat
    */
-  @Column(name = "name")
+  @Column(
+      name = "name",
+      unique = true
+  )
   @NotNull(
       groups = {
           SourceFormatAddValidationGroup.class,

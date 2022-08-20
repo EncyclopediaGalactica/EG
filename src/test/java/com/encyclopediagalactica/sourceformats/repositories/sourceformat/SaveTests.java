@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -49,5 +50,16 @@ class SaveTests {
 
     // Act
     assertThatThrownBy(() -> sourceFormatRepository.save(null)).isInstanceOf(InvalidDataAccessApiUsageException.class);
+  }
+
+  @Test
+  void shouldThrow_whenUniquesNameConstraintIsViolated() {
+    // Arrange
+    SourceFormat sf = new SourceFormat("name");
+    SourceFormat sf2 = new SourceFormat("name");
+    SourceFormat sfResult = sourceFormatRepository.save(sf);
+
+    // Act
+    assertThatThrownBy(() -> sourceFormatRepository.save(sf2)).isInstanceOf(DataIntegrityViolationException.class);
   }
 }
