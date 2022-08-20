@@ -1,6 +1,7 @@
 package com.encyclopediagalactica.sourceformats.services.sourceformat;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.encyclopediagalactica.sourceformats.SourceFormatServiceApplication;
 import com.encyclopediagalactica.sourceformats.dto.SourceFormatDto;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -38,5 +40,17 @@ class AddServiceTests {
     // Assert
     assertThat(result.getId()).isGreaterThan(0);
     assertThat(result.getName()).isEqualTo("asd");
+  }
+
+  @Test
+  void shouldThrow_whenUniqueNameConstraitIsViolated() {
+
+    // Arrange
+    SourceFormatDto dto1 = SourceFormatDto.builder().name("name").build();
+    SourceFormatDto dto2 = SourceFormatDto.builder().name("name").build();
+    SourceFormatDto dtoResult = addService.add(dto1);
+
+    // Act
+    assertThatThrownBy(() -> addService.add(dto2)).isInstanceOf(DataIntegrityViolationException.class);
   }
 }

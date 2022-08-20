@@ -15,6 +15,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -28,7 +29,7 @@ import org.springframework.test.context.TestPropertySource;
     })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @Tag("integration")
-public class UpdateValidationTests extends UpdateEntityValidationDataProviders {
+public class UpdateServiceTests extends UpdateEntityValidationDataProviders {
 
   @Autowired
   private UpdateServiceInterface updateService;
@@ -63,5 +64,20 @@ public class UpdateValidationTests extends UpdateEntityValidationDataProviders {
     // Act && Assert
     assertThatThrownBy(() -> updateService.updateById(dto))
         .isInstanceOf(NoSuchElementException.class);
+  }
+
+  @Test
+  void shouldThrow_whenUniqueNameConstraitIsViolated() {
+
+    // Arrange
+    SourceFormatDto dto1 = SourceFormatDto.builder().name("name").build();
+    SourceFormatDto dto2 = SourceFormatDto.builder().name("namem").build();
+    SourceFormatDto dtoResult = addService.add(dto1);
+    SourceFormatDto dto2Result = addService.add(dto2);
+
+    SourceFormatDto update = SourceFormatDto.builder().name("name").id(dto2Result.getId()).build();
+
+    // Act
+    assertThatThrownBy(() -> updateService.updateById(update)).isInstanceOf(DataIntegrityViolationException.class);
   }
 }
