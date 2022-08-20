@@ -67,7 +67,6 @@ public class UpdateEndpointE2ETests extends UpdateEntityValidationDataProviders 
         .exchange()
         .expectStatus()
         .isNotFound();
-
   }
 
   @ParameterizedTest
