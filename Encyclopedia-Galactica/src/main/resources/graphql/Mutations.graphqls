@@ -1,0 +1,4 @@
+type Mutation {
+    createDocument(document: DocumentInput): Document
+    modifyDocument(document: DocumentInput): Document
+}

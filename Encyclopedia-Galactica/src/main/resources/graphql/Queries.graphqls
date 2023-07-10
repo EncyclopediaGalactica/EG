@@ -1,0 +1,4 @@
+type Query {
+    getDocuments: [Document]
+    getDocument(id: ID): Document
+}
