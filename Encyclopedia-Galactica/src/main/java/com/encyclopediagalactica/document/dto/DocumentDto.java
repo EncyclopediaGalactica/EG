@@ -12,7 +12,7 @@ public class DocumentDto {
         this.desc = desc;
     }
 
-    private DocumentDto() {
+    public DocumentDto() {
     }
 
     public static DocumentDtoBuilder builder() {

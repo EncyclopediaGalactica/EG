@@ -27,10 +27,18 @@ public class CreateNewDocumentScenarioValidatorImpl
         executeValidationRules(documentDto);
     }
 
+    @Override
+    public void validateAndThrow(DocumentDto documentDto) {
+        validateAndThrow(documentDto, ValidationMode.FULL);
+    }
+
     private void executeValidationRules(DocumentDto documentDto) {
         idMustBeZero(documentDto);
+        System.out.println("errors length 1: " + errors.size());
         nameMustNotBeNullOrEmpty(documentDto);
+        System.out.println("errors length 2: " + errors.size());
         nameLengthMustBeGreaterOrEqualTo(3, documentDto);
+        System.out.println("errors length 3: " + errors.size());
         evaluateValidationResult();
     }
 
@@ -64,6 +72,10 @@ public class CreateNewDocumentScenarioValidatorImpl
     }
 
     private void idMustBeZero(DocumentDto documentDto) {
+        if (documentDto == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
         if (!isLongEqualTo(documentDto.getId(), 0L)) {
             errors.add(
                 new Error(

@@ -20,6 +20,7 @@ public class LongValidatorTests {
     public static Stream<Arguments> equalsToData() {
         return Stream.of(
             Arguments.of(1L, 1L, true),
+            Arguments.of(0L, 0L, true),
             Arguments.of(1L, 2L, false),
             Arguments.of(null, 2L, false),
             Arguments.of(1L, null, false),

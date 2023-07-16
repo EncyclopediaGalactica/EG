@@ -7,8 +7,6 @@ import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureH
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.HttpGraphQlTester;
 
-import java.util.List;
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureHttpGraphQlTester
 public class CreateDocumentE2ETest {
@@ -19,17 +17,24 @@ public class CreateDocumentE2ETest {
     @Test
     public void shouldCreateDocument_andReturnIt() {
 
+        // Arrange
+
         // Act
-        List<DocumentDto> result = httpGraphQlTester.document("{\n" +
-                "  getDocuments {\n" +
-                "    id\n" +
-                "    name\n" +
-                "    desc\n" +
-                "  }\n" +
-                "}")
+        DocumentDto result = httpGraphQlTester.document("""
+                   mutation createDocument($documentInput: DocumentInput!) {
+                     createDocument(documentInput: $documentInput) {
+                       id
+                       name
+                       desc
+                     }
+                   }
+                """)
+            .variable("id", 0L)
+            .variable("name", "named")
+            .variable("desc", "descd")
             .execute()
-            .path("data.getDocuments")
-            .entityList(DocumentDto.class)
+            .path("data")
+            .entity(DocumentDto.class)
             .get();
 
         System.out.println(result);
