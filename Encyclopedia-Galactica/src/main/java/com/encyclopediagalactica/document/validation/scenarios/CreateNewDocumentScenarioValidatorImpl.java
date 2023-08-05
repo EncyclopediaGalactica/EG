@@ -7,9 +7,9 @@ import com.encyclopediagalactica.document.validation.validators.StringValidatorI
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("createNewDocumentScenarioValidator")
 public class CreateNewDocumentScenarioValidatorImpl
-    extends ScenarioValidatorAbstract
+    extends ScenarioValidatorAbstract<DocumentDto>
     implements ScenarioValidatorInterface<DocumentDto> {
 
     public CreateNewDocumentScenarioValidatorImpl(
@@ -25,6 +25,7 @@ public class CreateNewDocumentScenarioValidatorImpl
         ValidationMode validationMode) {
         this.validationMode = validationMode;
         executeValidationRules(documentDto);
+        evaluateValidationResult();
     }
 
     @Override
@@ -34,12 +35,8 @@ public class CreateNewDocumentScenarioValidatorImpl
 
     private void executeValidationRules(DocumentDto documentDto) {
         idMustBeZero(documentDto);
-        System.out.println("errors length 1: " + errors.size());
         nameMustNotBeNullOrEmpty(documentDto);
-        System.out.println("errors length 2: " + errors.size());
         nameLengthMustBeGreaterOrEqualTo(3, documentDto);
-        System.out.println("errors length 3: " + errors.size());
-        evaluateValidationResult();
     }
 
     private void nameLengthMustBeGreaterOrEqualTo(int i, DocumentDto documentDto) {

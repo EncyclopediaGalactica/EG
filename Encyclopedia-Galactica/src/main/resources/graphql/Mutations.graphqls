@@ -1,4 +1,0 @@
-type Mutation {
-    createDocument(documentInput: DocumentInput!): Document
-    modifyDocument(documentInput: DocumentInput!): Document
-}

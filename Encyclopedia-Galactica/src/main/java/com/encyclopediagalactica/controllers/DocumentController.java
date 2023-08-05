@@ -2,6 +2,8 @@ package com.encyclopediagalactica.controllers;
 
 import com.encyclopediagalactica.document.businesslogic.DocumentBusinessLogicInterface;
 import com.encyclopediagalactica.document.dto.DocumentDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -12,6 +14,7 @@ import java.util.List;
 @Controller
 public class DocumentController {
 
+    private final Logger logger = LoggerFactory.getLogger(DocumentController.class);
     private final DocumentBusinessLogicInterface documentBusinessLogic;
 
     public DocumentController(DocumentBusinessLogicInterface documentBusinessLogic) {
@@ -28,8 +31,15 @@ public class DocumentController {
         return documentBusinessLogic.getDocument(id);
     }
 
-    @MutationMapping
-    public DocumentDto createDocument(@Argument DocumentDto documentDto) {
+    @MutationMapping(name = "createDocument")
+    public DocumentDto createDocument(@Argument("documentInput") DocumentDto documentDto) {
         return documentBusinessLogic.createDocument(documentDto);
+    }
+
+    @MutationMapping(name = "modifyDocument")
+    public DocumentDto modifyDocument(
+        @Argument("documentId") Long documentId,
+        @Argument("document") DocumentDto documentDto) {
+        return documentBusinessLogic.modifyDocument(documentId, documentDto);
     }
 }

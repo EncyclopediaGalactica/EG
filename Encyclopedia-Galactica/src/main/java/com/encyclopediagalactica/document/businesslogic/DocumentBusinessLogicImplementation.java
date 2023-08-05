@@ -3,8 +3,7 @@ package com.encyclopediagalactica.document.businesslogic;
 import com.encyclopediagalactica.document.dto.DocumentDto;
 import com.encyclopediagalactica.document.entities.Document;
 import com.encyclopediagalactica.document.mappers.DocumentMapperInterface;
-import com.encyclopediagalactica.document.repositories.DocumentRepositoryInterface;
-import com.encyclopediagalactica.document.validation.DocumentDtoValidationImplementation;
+import com.encyclopediagalactica.document.repositories.DocumentRepository;
 import com.encyclopediagalactica.document.validation.DocumentDtoValidationInterface;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
@@ -14,12 +13,12 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class DocumentBusinessLogicImplementation implements DocumentBusinessLogicInterface {
-    private final DocumentRepositoryInterface documentRepository;
+    private final DocumentRepository documentRepository;
     private final DocumentMapperInterface documentMapper;
     private final DocumentDtoValidationInterface documentDtoValidation;
 
     public DocumentBusinessLogicImplementation(
-        @NonNull DocumentRepositoryInterface documentRepository,
+        @NonNull DocumentRepository documentRepository,
         @NonNull DocumentMapperInterface documentMapper,
         @NonNull DocumentDtoValidationInterface documentDtoValidation) {
         this.documentRepository = documentRepository;
@@ -50,5 +49,28 @@ public class DocumentBusinessLogicImplementation implements DocumentBusinessLogi
         Document result = documentRepository.save(document);
         DocumentDto resultDto = documentMapper.mapDocumentToDocumentDto(result);
         return resultDto;
+    }
+
+    @Override
+    public DocumentDto modifyDocument(Long documentId, DocumentDto documentDto) {
+        documentDtoValidation.validateModifyDocumentScenario(documentDto);
+        Document exampleModifiedDocument = documentMapper.mapDocumentDtoToDocument(documentDto);
+        Document toBeModifiedDocument = documentRepository.findById(documentId).orElseThrow();
+
+        modifyDocumentUpdateFields(toBeModifiedDocument, exampleModifiedDocument);
+
+        Document result = documentRepository.save(toBeModifiedDocument);
+        DocumentDto resultDto = documentMapper.mapDocumentToDocumentDto(result);
+        return resultDto;
+    }
+
+    private static void modifyDocumentUpdateFields(Document toBeModifiedDocument, Document exampleModifiedDocument) {
+        if (!toBeModifiedDocument.getName().equals(exampleModifiedDocument.getName())) {
+            toBeModifiedDocument.setName(exampleModifiedDocument.getName());
+        }
+
+        if (!toBeModifiedDocument.getDesc().equals(exampleModifiedDocument.getDesc())) {
+            toBeModifiedDocument.setDesc(exampleModifiedDocument.getDesc());
+        }
     }
 }

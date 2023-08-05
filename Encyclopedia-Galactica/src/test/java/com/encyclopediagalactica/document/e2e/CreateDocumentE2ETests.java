@@ -7,9 +7,14 @@ import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureH
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.HttpGraphQlTester;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureHttpGraphQlTester
-public class CreateDocumentE2ETest {
+public class CreateDocumentE2ETests {
 
     @Autowired
     private HttpGraphQlTester httpGraphQlTester;
@@ -18,26 +23,33 @@ public class CreateDocumentE2ETest {
     public void shouldCreateDocument_andReturnIt() {
 
         // Arrange
+        String name = "name";
+        String desc = "desc";
+        Map<String, Object> input = new HashMap<>();
+        input.put("id", 0L);
+        input.put("name", name);
+        input.put("desc", desc);
 
         // Act
         DocumentDto result = httpGraphQlTester.document("""
-                   mutation createDocument($documentInput: DocumentInput!) {
-                     createDocument(documentInput: $documentInput) {
+                   mutation mut($input: DocumentInput!) {
+                     createDocument(documentInput: $input) {
                        id
                        name
                        desc
                      }
                    }
                 """)
-            .variable("id", 0L)
-            .variable("name", "named")
-            .variable("desc", "descd")
+            .variable("input", input)
             .execute()
-            .path("data")
+            .path("createDocument")
             .entity(DocumentDto.class)
             .get();
 
-        System.out.println(result);
+        // Assert
+        assertThat(result.getId()).isGreaterThan(0);
+        assertThat(result.getName()).isEqualTo(name);
+        assertThat(result.getDesc()).isEqualTo(desc);
     }
 
 }

@@ -9,7 +9,7 @@ import lombok.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScenarioValidatorAbstract {
+public abstract class ScenarioValidatorAbstract<T> {
     protected List<Error> errors = new ArrayList<>();
     protected ValidationMode validationMode;
 
@@ -20,6 +20,10 @@ public class ScenarioValidatorAbstract {
         FULL,
         THROW_AT_FIRST_ERROR
     }
+
+    abstract void validateAndThrow(T t, ScenarioValidatorAbstract.ValidationMode validationMode);
+
+    abstract void validateAndThrow(T t);
 
     public ScenarioValidatorAbstract(
         @NonNull StringValidatorInterface stringValidator,
