@@ -52,7 +52,7 @@ stages:
           - script: mvn surefire:test
 
       - job: install_semantic
-        dependsOn: test_solution
+        dependsOn: test
         displayName: Install Semantic
         steps:
           - script: |
