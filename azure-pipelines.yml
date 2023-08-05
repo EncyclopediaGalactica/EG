@@ -8,10 +8,6 @@ pr:
 
 pool: 'contabo'
 
-variables:
-  buildConfiguration: 'Release'
-  solutionName: 'semantic-release.sln'
-
 stages:
   - stage: Variables
     jobs:
