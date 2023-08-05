@@ -30,7 +30,7 @@ stages:
         displayName: Testing
         dependsOn: build
         steps:
-          - script: mvn test
+          - script: mvn surefire:test
 
   - stage: Main_branch
     condition: and(eq(variables['System.PullRequest.SourceBranch'], ''), eq(variables['Build.SourceBranch'],'refs/heads/main'))
@@ -45,7 +45,7 @@ stages:
         dependsOn: build
         displayName: Test solution
         steps:
-          - script: mvn test
+          - script: mvn surefire:test
 
       - job: install_semantic
         dependsOn: test
