@@ -1,3 +1,10 @@
+## [0.0.2](https://github.com/EncyclopediaGalactica/EG/compare/0.0.1...0.0.2) (2023-08-06)
+
+
+### Bug Fixes
+
+* using mvn test command in test stages ([#27](https://github.com/EncyclopediaGalactica/EG/issues/27)) ([150af12](https://github.com/EncyclopediaGalactica/EG/commit/150af12dbd488db4c431a27f54527446b7ab234c))
+
 ## [0.0.1](https://github.com/EncyclopediaGalactica/EG/compare/0.0.0...0.0.1) (2023-08-05)
 
 
