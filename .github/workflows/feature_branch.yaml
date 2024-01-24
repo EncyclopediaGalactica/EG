@@ -7,7 +7,6 @@ on:
       - main
 
 jobs:
-  
   debug:
     name: Debug
     runs-on: ubuntu-latest
