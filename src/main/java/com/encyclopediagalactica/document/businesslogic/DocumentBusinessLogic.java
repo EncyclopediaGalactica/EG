@@ -5,7 +5,7 @@ import com.encyclopediagalactica.document.entities.Document;
 
 import java.util.List;
 
-public interface DocumentBusinessLogicInterface {
+public interface DocumentBusinessLogic {
 
     /**
      * Returns the list of {@link Document} entities.

@@ -3,7 +3,7 @@ package com.encyclopediagalactica.document.validation.validators;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StringValidatorImpl implements StringValidatorInterface {
+public class StringValidatorImpl implements StringValidator {
 
     @Override
     public boolean isLongerOrEqualThan(String str, int length) {

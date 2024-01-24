@@ -1,6 +1,6 @@
-package com.encyclopediagalactica.controllers;
+package com.encyclopediagalactica.document.controllers;
 
-import com.encyclopediagalactica.document.businesslogic.DocumentBusinessLogicInterface;
+import com.encyclopediagalactica.document.businesslogic.DocumentBusinessLogic;
 import com.encyclopediagalactica.document.dto.DocumentDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,9 @@ import java.util.List;
 public class DocumentController {
 
     private final Logger logger = LoggerFactory.getLogger(DocumentController.class);
-    private final DocumentBusinessLogicInterface documentBusinessLogic;
+    private final DocumentBusinessLogic documentBusinessLogic;
 
-    public DocumentController(DocumentBusinessLogicInterface documentBusinessLogic) {
+    public DocumentController(DocumentBusinessLogic documentBusinessLogic) {
         this.documentBusinessLogic = documentBusinessLogic;
     }
 

@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class DocumentMapperImplementation implements DocumentMapperInterface {
+public class DocumentMapperImp implements DocumentMapper {
     @Override
     public List<DocumentDto> mapDocumentsToDocumentDtos(List<Document> documents) {
         if (documents.isEmpty()) {

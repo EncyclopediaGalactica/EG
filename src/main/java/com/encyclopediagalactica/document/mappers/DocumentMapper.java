@@ -2,11 +2,10 @@ package com.encyclopediagalactica.document.mappers;
 
 import com.encyclopediagalactica.document.dto.DocumentDto;
 import com.encyclopediagalactica.document.entities.Document;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface DocumentMapperInterface {
+public interface DocumentMapper {
 
     /**
      * Maps {@link List<Document>} to {@link List<DocumentDto>}.

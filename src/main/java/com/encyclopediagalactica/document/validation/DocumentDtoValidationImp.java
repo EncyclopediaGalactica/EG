@@ -2,23 +2,23 @@ package com.encyclopediagalactica.document.validation;
 
 import com.encyclopediagalactica.document.dto.DocumentDto;
 import com.encyclopediagalactica.document.validation.scenarios.ScenarioValidatorAbstract;
-import com.encyclopediagalactica.document.validation.scenarios.ScenarioValidatorInterface;
+import com.encyclopediagalactica.document.validation.scenarios.ScenarioValidator;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DocumentDtoValidationImplementation implements DocumentDtoValidationInterface {
+public class DocumentDtoValidationImp implements DocumentDtoValidation {
 
     @Qualifier("createNewDocumentScenarioValidator")
-    private final ScenarioValidatorInterface createNewDocumentScenarioValidator;
+    private final ScenarioValidator createNewDocumentScenarioValidator;
 
     @Qualifier("modifyDocumentScenarioValidator")
-    private final ScenarioValidatorInterface modifyDocumentScenarioValidator;
+    private final ScenarioValidator modifyDocumentScenarioValidator;
 
-    public DocumentDtoValidationImplementation(
-        @NonNull ScenarioValidatorInterface createNewDocumentScenarioValidator,
-        @NonNull ScenarioValidatorInterface modifyDocumentScenarioValidator) {
+    public DocumentDtoValidationImp(
+        @NonNull ScenarioValidator createNewDocumentScenarioValidator,
+        @NonNull ScenarioValidator modifyDocumentScenarioValidator) {
         this.createNewDocumentScenarioValidator = createNewDocumentScenarioValidator;
         this.modifyDocumentScenarioValidator = modifyDocumentScenarioValidator;
     }

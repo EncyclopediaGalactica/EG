@@ -2,19 +2,19 @@ package com.encyclopediagalactica.document.validation.scenarios;
 
 import com.encyclopediagalactica.document.dto.DocumentDto;
 import com.encyclopediagalactica.document.validation.Error;
-import com.encyclopediagalactica.document.validation.validators.LongValidatorInterface;
-import com.encyclopediagalactica.document.validation.validators.StringValidatorInterface;
+import com.encyclopediagalactica.document.validation.validators.LongValidator;
+import com.encyclopediagalactica.document.validation.validators.StringValidator;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
 @Service("createNewDocumentScenarioValidator")
 public class CreateNewDocumentScenarioValidatorImpl
     extends ScenarioValidatorAbstract<DocumentDto>
-    implements ScenarioValidatorInterface<DocumentDto> {
+    implements ScenarioValidator<DocumentDto> {
 
     public CreateNewDocumentScenarioValidatorImpl(
-        @NonNull StringValidatorInterface stringValidator,
-        @NonNull LongValidatorInterface longValidator
+        @NonNull StringValidator stringValidator,
+        @NonNull LongValidator longValidator
     ) {
         super(stringValidator, longValidator);
     }
