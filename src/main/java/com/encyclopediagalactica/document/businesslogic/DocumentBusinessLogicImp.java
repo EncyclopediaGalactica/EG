@@ -2,9 +2,9 @@ package com.encyclopediagalactica.document.businesslogic;
 
 import com.encyclopediagalactica.document.dto.DocumentDto;
 import com.encyclopediagalactica.document.entities.Document;
-import com.encyclopediagalactica.document.mappers.DocumentMapperInterface;
+import com.encyclopediagalactica.document.mappers.DocumentMapper;
 import com.encyclopediagalactica.document.repositories.DocumentRepository;
-import com.encyclopediagalactica.document.validation.DocumentDtoValidationInterface;
+import com.encyclopediagalactica.document.validation.DocumentDtoValidation;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +12,15 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 
 @Service
-public class DocumentBusinessLogicImplementation implements DocumentBusinessLogicInterface {
+public class DocumentBusinessLogicImp implements DocumentBusinessLogic {
     private final DocumentRepository documentRepository;
-    private final DocumentMapperInterface documentMapper;
-    private final DocumentDtoValidationInterface documentDtoValidation;
+    private final DocumentMapper documentMapper;
+    private final DocumentDtoValidation documentDtoValidation;
 
-    public DocumentBusinessLogicImplementation(
+    public DocumentBusinessLogicImp(
         @NonNull DocumentRepository documentRepository,
-        @NonNull DocumentMapperInterface documentMapper,
-        @NonNull DocumentDtoValidationInterface documentDtoValidation) {
+        @NonNull DocumentMapper documentMapper,
+        @NonNull DocumentDtoValidation documentDtoValidation) {
         this.documentRepository = documentRepository;
         this.documentMapper = documentMapper;
         this.documentDtoValidation = documentDtoValidation;

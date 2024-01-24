@@ -2,7 +2,7 @@ package com.encyclopediagalactica.document.validation.scenarios;
 
 import com.encyclopediagalactica.document.validation.ValidationExcecption;
 
-public interface ScenarioValidatorInterface<T> {
+public interface ScenarioValidator<T> {
 
     /**
      * Executes validation and throws {@link ValidationExcecption} if the input is not fit for the rules

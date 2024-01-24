@@ -2,8 +2,8 @@ package com.encyclopediagalactica.document.validation.scenarios;
 
 import com.encyclopediagalactica.document.validation.Error;
 import com.encyclopediagalactica.document.validation.ValidationExcecption;
-import com.encyclopediagalactica.document.validation.validators.LongValidatorInterface;
-import com.encyclopediagalactica.document.validation.validators.StringValidatorInterface;
+import com.encyclopediagalactica.document.validation.validators.LongValidator;
+import com.encyclopediagalactica.document.validation.validators.StringValidator;
 import lombok.NonNull;
 
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ public abstract class ScenarioValidatorAbstract<T> {
     protected List<Error> errors = new ArrayList<>();
     protected ValidationMode validationMode;
 
-    private final StringValidatorInterface stringValidator;
-    private final LongValidatorInterface longValidator;
+    private final StringValidator stringValidator;
+    private final LongValidator longValidator;
 
     public enum ValidationMode {
         FULL,
@@ -26,8 +26,8 @@ public abstract class ScenarioValidatorAbstract<T> {
     abstract void validateAndThrow(T t);
 
     public ScenarioValidatorAbstract(
-        @NonNull StringValidatorInterface stringValidator,
-        @NonNull LongValidatorInterface longValidator) {
+        @NonNull StringValidator stringValidator,
+        @NonNull LongValidator longValidator) {
         this.stringValidator = stringValidator;
         this.longValidator = longValidator;
     }

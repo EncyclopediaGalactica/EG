@@ -1,6 +1,6 @@
 package com.encyclopediagalactica.document.validation.validators;
 
-public interface LongValidatorInterface {
+public interface LongValidator {
 
     /**
      * Returns true if the provided id equals to the to value. In any other case, returns false.

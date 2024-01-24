@@ -1,6 +1,6 @@
 package com.encyclopediagalactica.document.validation.validators;
 
-public interface StringValidatorInterface {
+public interface StringValidator {
 
     /**
      * Checks if the provided string length is equal or greater than the provided expected length. The provided string

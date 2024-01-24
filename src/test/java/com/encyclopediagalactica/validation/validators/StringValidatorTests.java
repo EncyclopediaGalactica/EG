@@ -1,6 +1,6 @@
 package com.encyclopediagalactica.validation.validators;
 
-import com.encyclopediagalactica.document.validation.validators.StringValidatorInterface;
+import com.encyclopediagalactica.document.validation.validators.StringValidator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringValidatorTests {
 
     @Autowired
-    private StringValidatorInterface stringValidator;
+    private StringValidator stringValidator;
 
     private static Stream<Arguments> longerOrEqualThanData() {
         return Stream.of(

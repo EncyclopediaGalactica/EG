@@ -3,7 +3,7 @@ package com.encyclopediagalactica.document.validation;
 import com.encyclopediagalactica.document.dto.DocumentDto;
 import com.encyclopediagalactica.document.validation.scenarios.ScenarioValidatorAbstract;
 
-public interface DocumentDtoValidationInterface {
+public interface DocumentDtoValidation {
 
     /**
      * Validates a {@link DocumentDto} object if it fits for the creating new document scenario. If the object is
