@@ -42,7 +42,6 @@ jobs:
           distribution: 'oracle'
           java-version: '21'
           cache: 'maven'
-          cache-dependency-path: 'pom.xml'
 
       - name: Build
         run: |
