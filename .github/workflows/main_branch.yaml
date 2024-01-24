@@ -2,7 +2,7 @@ name: Main Branch build
 run-name: Main Branch build
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
