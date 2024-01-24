@@ -1,3 +1,11 @@
+## [0.0.3](https://github.com/EncyclopediaGalactica/EG/compare/0.0.2...0.0.3) (2024-01-24)
+
+
+### Bug Fixes
+
+* fixing github actions ([#30](https://github.com/EncyclopediaGalactica/EG/issues/30)) ([2c9671c](https://github.com/EncyclopediaGalactica/EG/commit/2c9671c12d63e84d44b857251067d4fa059768b5))
+* further fix for gh actions ([#31](https://github.com/EncyclopediaGalactica/EG/issues/31)) ([a02165a](https://github.com/EncyclopediaGalactica/EG/commit/a02165a49052d798b3d150325dfc86e6e5bf7841))
+
 ## [0.0.2](https://github.com/EncyclopediaGalactica/EG/compare/0.0.1...0.0.2) (2023-08-06)
 
 
